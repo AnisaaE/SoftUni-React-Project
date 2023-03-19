@@ -1,9 +1,12 @@
+import {Link} from "react-router-dom"
+import './Home.css'
+
 export function Home() {
     return (
-        <div class="background-image">
-        <div class="container">
-          <h1 class="heading">"A recipe has no soul. You as the cook must bring soul to the recipe."</h1>
-          <a class="button" href="#">Go to Catalog</a>
+        <div className="background-image">
+        <div className="container">
+          <h1 className="heading">"A recipe has no soul. You as the cook must bring soul to the recipe."</h1>
+          <Link className="button" to="/catalog">Go to Catalog</Link>
     
         </div>
       </div>

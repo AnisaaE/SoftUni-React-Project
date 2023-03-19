@@ -1,6 +1,8 @@
 export function Catalog() {
     return (
-        <div className="recipe-catalog">
+      <div>
+        <h2 className="recipe" >All recipes</h2>
+      <div className="recipe-catalog">  
         <div className="recipe-card">
           <img src="https://www.giallozafferano.com/images/228-22832/spaghetti-with-tomato-sauce_1200x800.jpg" alt="Recipe 1" />
           <h3 className="recipe-title">Spaghetti with Tomato Sauce</h3>
@@ -16,6 +18,7 @@ export function Catalog() {
           <h3 className="recipe-title">Roasted Chicken and Vegetables</h3>
           <a href="#" className="recipe-button">Details</a>
         </div>
-      </div>
+      </div>  
+    </div>
     );
   }

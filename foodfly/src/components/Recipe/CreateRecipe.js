@@ -1,9 +1,9 @@
 export function CreateRecipe() {
     return (
-        <div className="container">
+      <div className="container">
         <div className="main_div">
           <div className="title">Create Post</div>
-          <form action="#">
+          <form action="POST">
             <div className="input_box">
               <input type="text" name="title" placeholder="Title" required="" />
               <div className="icon">

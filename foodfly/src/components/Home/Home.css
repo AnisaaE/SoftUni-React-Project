@@ -1,0 +1,55 @@
+.background-image {
+    background-image: url("https://i.pinimg.com/originals/d3/6d/46/d36d462db827833805497d9ea78a1343.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container {
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    padding: 50px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    margin: 0 auto;
+  }
+  
+  .heading {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+  
+  .button {
+    background-color: #E64C3C;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .button_exception {
+      
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .button:hover {
+    background-color: white;
+    color: #E64C3C;
+    transition: background-color 0.3s ease;
+  }
+
+  

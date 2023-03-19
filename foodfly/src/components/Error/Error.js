@@ -1,4 +1,4 @@
-export function Error() {
+export function ErrorPage() {
     return (
        <div class="container">
 <h1 class="error-code">404</h1>

@@ -4,12 +4,15 @@ import "./App.css";
 import { Catalog } from "./components/Catalog";
 import { Home } from "./components/Home/Home";
 import { NavigationBar } from "./components/NavigationBar/NavigationBar";
-import { Footer } from "./components/Footer";
+import { Footer } from "./components/Footer/Footer";
 import { Register } from "./components/Register";
 import { Detail } from "./components/Recipe/Detail";
-import { Error } from "./components/Error";
-import { Login } from "./components/Login";
+import { ErrorPage } from "./components/Error/Error";
+import { Login } from "./components/Login/Login";
 import { CreateRecipe } from "./components/Recipe/CreateRecipe";
+import About from "./components/About/About";
+import { Profile } from "./components/Profile/Profile";
+
 
 function App() {
   return (
@@ -17,18 +20,20 @@ function App() {
       <NavigationBar />
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/recipes" element={<Catalog />} />
-        <Route path="/details/:recipeId" element={<Detail />} />
+        <Route path="/" element={<Home/>} />
+        <Route path="/about" element={<About/>} />
+        <Route path="/catalog" element={<Catalog/>} />
+        <Route path="/details/:recipeId" element={<Detail/>} />
         {/* <Route path="/edit/:recipeId" element={EditClass}/>
 				<Route path="/delete/:recipeId" element={>DeleteClass}/> */}
+        <Route path="/profile" element={<Profile/>} />
 
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register/>} />
+        <Route path="/login" element={<Login/>} />
 
         {/* <Route path="/profile/:userId" component={Profile} /> */}
-        <Route path="/create" component={<CreateRecipe />} />
-     
+        <Route path="/create" element={<CreateRecipe/>} />
+        <Route path="*" element={<ErrorPage/>} />
       </Routes>
       <Footer />
     </>

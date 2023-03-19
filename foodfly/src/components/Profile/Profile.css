@@ -1,0 +1,103 @@
+/* Profile Page Styles */
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px auto;
+    max-width: 800px;
+  }
+  
+  .profile-data {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile_img {
+    margin-right: 30px;
+  }
+  
+  .image img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+  }
+  
+  .personal {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .edit p {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+    margin-bottom: 10px;
+  }
+  
+  .data {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 18px;
+  }
+  
+  .data span {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  
+  .data p {
+    margin: 0;
+    margin-left: 5px;
+  }
+  
+  .email {
+    margin-top: 10px;
+    font-size: 16px;
+  }
+  
+  .pet-photos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .pet-photos a {
+    margin: 10px;
+    display: block;
+    width: 250px;
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .pet-photos img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.3s ease;
+  }
+  
+  .pet-photos img:hover {
+    transform: scale(1.1);
+  }
+  
+  .not-available-photo {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .not-available-photo h1 {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  

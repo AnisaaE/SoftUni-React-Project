@@ -97,61 +97,6 @@ nav {
   margin-left: 5px;
 }
 
-/* Home page styles */
-.background-image {
-  background-image: url("https://i.pinimg.com/originals/d3/6d/46/d36d462db827833805497d9ea78a1343.jpg");
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.container {
-  width: 80%;
-  max-width: 700px;
-  text-align: center;
-  padding: 50px;
-  background-color: rgba(255, 255, 255, 0.7);
-  border-radius: 10px;
-  margin: 0 auto;
-}
-
-.heading {
-  font-size: 36px;
-  font-weight: 700;
-  margin-bottom: 30px;
-}
-
-.button {
-  background-color: #E64C3C;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 18px;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.button_exception {
-    
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 18px;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.button:hover {
-  background-color: white;
-  color: #E64C3C;
-  transition: background-color 0.3s ease;
-}
-
 /* Recipe catalog styles */
 .recipe-catalog {
   display: flex;
@@ -159,6 +104,13 @@ nav {
   align-items: center;
   flex-wrap: wrap;
   margin-top: 30px;
+}
+.recipe h2 {
+  text-align: center; 
+  font-size: 2rem; 
+  font-weight: bold; 
+  text-transform: uppercase; 
+  margin-top: 2rem; 
 }
 
 .recipe-card {
@@ -403,60 +355,8 @@ nav {
 
 /* error */
 
-.containerError {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-color: #f8f8f8;
-}
 
-.error-code {
-  font-size: 10rem;
-  font-weight: 700;
-  color: #ff8c00;
-  margin-bottom: 10px;
-  
-}
-
-.error-message {
-  font-size: 2rem;
-  font-weight: 500;
-  color: #000000;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-.back-button {
-  background-color: #ff8c00;
-  color: #ffffff;
-  font-size: 1.2rem;
-  font-weight: 600;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.back-button:hover {
-  background-color: #ff9900;
-}
-
-.footer {
-  background-color: #f8f8f8;
-  color: #333;
-  padding: 20px;
-  text-align: center;
-  position: absolute;
-  /* bottom: 0; */
-  width: 90%;
-  font-size: 14px;
-  font-style: italic;
-}
-
-/* login */
+/* login, register, create, edit*/
 
 .container .main_div{
   width: 365px;
@@ -565,4 +465,3 @@ form a{
 form a:hover{
   text-decoration: underline;
 }
-
