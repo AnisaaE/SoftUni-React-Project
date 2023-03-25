@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom'
+
 export function Detail() {
     return (
         <div class="containerDetails">
@@ -27,7 +29,7 @@ export function Detail() {
             </form>
           </div>
           <button class="active-recipe__button">
-            {/* <Link to="/">Go Home</Link> */}
+            <Link to="/">Go Home</Link>
           </button>
         </div>
       </div>

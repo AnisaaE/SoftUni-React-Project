@@ -16,8 +16,9 @@ import { TypesOfRecipies } from "./components/TypesOfRecipies/TypesOfRecipies";
 
 
 function App() {
-
   
+
+
   return (
     <>
       <NavigationBar />
@@ -25,7 +26,7 @@ function App() {
         <Route path="/" element={<Home/>} />
         <Route path="/about" element={<About/>} />
         <Route path="/catalog" element={<Catalog/>} />
-        <Route path="/details/:recipeId" element={<Detail/>} />
+        <Route path="/catalog/:recipeId" element={<Detail/>} />
         {/* <Route path="/catalog/:recipeId/edit" element={EditClass}/>
 				<Route path="/catalog/:recipeId/delete" element={>DeleteClass}/> */}
         <Route path="/profile" element={<Profile/>} />
@@ -33,7 +34,7 @@ function App() {
         <Route path="/register" element={<Register/>} />
         <Route path="/login" element={<Login/>} />
 
-        {/* <Route path="/profile/:userId" component={Profile} /> */}
+        {/* <Route path="/profile/:userId" element={Profile} /> */}
         <Route path="/create" element={<CreateRecipe/>} />
         <Route path="*" element={<ErrorPage/>} />
       </Routes>

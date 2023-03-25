@@ -27,7 +27,7 @@ const request = async (method, token, url, data) => {
     return result;
   };
   
-  const requestBuilder = (token) => {
+export const requestBuilder = (token) => {
     const createRequest = (method) => request.bind(null, method, token);
     return {
       get: createRequest('GET'),
@@ -37,4 +37,3 @@ const request = async (method, token, url, data) => {
       delete: createRequest('DELETE'),
     };
   };
-  

@@ -1,9 +1,11 @@
+import {Link} from 'react-router-dom'
+
 export function Login() {
     return (
       <div className="container">
       <div className="main_div">
         <div className="title">Login Form</div>
-        <form action="#">
+        <form action="POST">
           <div className="input_box">
             <input type="text" name="email" placeholder="Email..." required />
             <div className="icon"><i className="fas fa-user" /></div>
@@ -16,7 +18,8 @@ export function Login() {
             <input type="submit" defaultValue="Login" />
           </div>
           <div className="sign_up">
-            Not a member? <a href="#">Sign up now</a>
+            Not a member? 
+            <Link to="/register">Sign up now</Link>
           </div>
         </form>
       </div>
