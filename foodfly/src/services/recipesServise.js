@@ -1,9 +1,9 @@
-import { requestFactory } from './requester';
+import { requestBuilder } from './requester';
 
-const baseUrl = 'http://localhost:3030/data/games';
+const baseUrl = 'http://localhost:3030/data/recipes';
 
-export const gameServiceFactory = (token) => {
-    const request = requestFactory(token);
+export const recipesServiceBuilder = (token) => {
+    const request = requestBuilder(token);
 
     const getAll = async () => {
         const result = await request.get(baseUrl);
@@ -12,29 +12,29 @@ export const gameServiceFactory = (token) => {
         return games;
     };
     
-    const getOne = async (gameId) => {
-        const result = await request.get(`${baseUrl}/${gameId}`);
+    const getOne = async (recipeId) => {
+        const result = await request.get(`${baseUrl}/${recipeId}`);
     
         return result;
     };
     
-    const create = async (gameData) => {
-        const result = await request.post(baseUrl, gameData);
+    const create = async (recipeData) => {
+        const result = await request.post(baseUrl, recipeData);
     
         console.log(result);
     
         return result;
     };
     
-    const addComment = async (gameId, data) => {
-        const result = await request.post(`${baseUrl}/${gameId}/comments`, data);
+    const addComment = async (recipeId, data) => {
+        const result = await request.post(`${baseUrl}/${recipeId}/comments`, data);
     
         return result;
     };
 
-    const edit = (gameId, data) => request.put(`${baseUrl}/${gameId}`, data);
+    const edit = (recipeId, data) => request.put(`${baseUrl}/${recipeId}`, data);
 
-    const deleteGame = (gameId) => request.delete(`${baseUrl}/${gameId}`);
+    const deleteGame = (recipeId) => request.delete(`${baseUrl}/${recipeId}`);
 
 
     return {

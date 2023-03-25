@@ -1,3 +1,4 @@
+import {useState, useEffect} from 'react'
 import { Route, Routes } from "react-router-dom";
 
 import "./App.css";
@@ -16,7 +17,7 @@ import { TypesOfRecipies } from "./components/TypesOfRecipies/TypesOfRecipies";
 
 
 function App() {
-  
+  const [recipes, setRecipes] = useState([])
 
 
   return (
