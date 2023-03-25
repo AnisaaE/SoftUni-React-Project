@@ -1,24 +1,24 @@
 import { Route, Routes } from "react-router-dom";
 
 import "./App.css";
-import { Catalog } from "./components/Catalog";
+import { Catalog } from "./components/Catalog/Catalog";
 import { Home } from "./components/Home/Home";
 import { NavigationBar } from "./components/NavigationBar/NavigationBar";
 import { Footer } from "./components/Footer/Footer";
 import { Register } from "./components/Register";
-import { Detail } from "./components/Recipe/Detail";
+import { Detail } from "./components/Details/Detail";
 import { ErrorPage } from "./components/Error/Error";
 import { Login } from "./components/Login/Login";
-import { CreateRecipe } from "./components/Recipe/CreateRecipe";
+import { CreateRecipe } from "./components/CreateRecipe";
 import About from "./components/About/About";
 import { Profile } from "./components/Profile/Profile";
+import { TypesOfRecipies } from "./components/TypesOfRecipies/TypesOfRecipies";
 
 
 function App() {
   return (
     <>
       <NavigationBar />
-
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/about" element={<About/>} />

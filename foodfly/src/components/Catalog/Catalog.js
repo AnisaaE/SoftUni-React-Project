@@ -1,5 +1,10 @@
+import "./Catalog.css"
+import { TypesOfRecipies } from "./components/TypesOfRecipies/TypesOfRecipies";
+
 export function Catalog() {
     return (
+      <>
+      <TypesOfRecipies/>
       <div>
         <h2 className="recipe" >All recipes</h2>
       <div className="recipe-catalog">  
@@ -20,5 +25,6 @@ export function Catalog() {
         </div>
       </div>  
     </div>
+    </>
     );
   }
