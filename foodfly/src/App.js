@@ -1,6 +1,8 @@
 import {useState, useEffect} from 'react'
 import { Route, Routes } from "react-router-dom";
 
+import {recipesServiceBuilder} from './services/recipesService'
+
 import "./App.css";
 import { Catalog } from "./components/Catalog/Catalog";
 import { Home } from "./components/Home/Home";
@@ -14,10 +16,33 @@ import { CreateRecipe } from "./components/CreateRecipe";
 import About from "./components/About/About";
 import { Profile } from "./components/Profile/Profile";
 import { TypesOfRecipies } from "./components/TypesOfRecipies/TypesOfRecipies";
+import { authServiceBuilder } from './services/userService';
 
 
 function App() {
+  const [auth, setAuth] = useState({});
+  const authService = authServiceBuilder(auth.accessToken)
   const [recipes, setRecipes] = useState([])
+
+
+  useEffect(()=>{
+    
+
+  })
+
+  const onSubmitLogin = async (data)=>{
+    try{ 
+      let result = await authService.login(data);
+      setAuth(result)
+    }catch(err){
+         throw new Error(err)
+    }
+  }
+
+const context = {
+  token:auth.accessToken,
+  isAuth: !!auth.accessToken
+}
 
 
   return (
@@ -33,7 +58,7 @@ function App() {
         <Route path="/profile" element={<Profile/>} />
 
         <Route path="/register" element={<Register/>} />
-        <Route path="/login" element={<Login/>} />
+        <Route path="/login" element={<Login onSubmit={onSubmitLogin}/>} />
 
         {/* <Route path="/profile/:userId" element={Profile} /> */}
         <Route path="/create" element={<CreateRecipe/>} />
