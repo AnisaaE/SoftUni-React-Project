@@ -2,7 +2,7 @@ import "./Catalog.css"
 import { CatalogItem } from "./CatalogItem";
 import { TypesOfRecipes } from "./components/TypesOfRecipies/TypesOfRecipies";
 
-export function Catalog() {
+export function Catalog({recipes}) {
     return (
       <>
       <TypesOfRecipes/>

@@ -7,9 +7,9 @@ export const recipesServiceBuilder = (token) => {
 
     const getAll = async () => {
         const result = await request.get(baseUrl);
-        const games = Object.values(result);
+        const recipes = Object.values(result);
     
-        return games;
+        return recipes;
     };
     
     const getOne = async (recipeId) => {
