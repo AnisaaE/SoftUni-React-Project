@@ -1,11 +1,11 @@
+import { TypesOfRecipies } from "../TypesOfRecipies/TypesOfRecipies";
 import "./Catalog.css"
 import { CatalogItem } from "./CatalogItem";
-import { TypesOfRecipes } from "./components/TypesOfRecipies/TypesOfRecipies";
 
 export function Catalog({recipes}) {
     return (
       <>
-      <TypesOfRecipes/>
+      <TypesOfRecipies/>
       <div>
         <h2 className="recipe" >All recipes</h2>
       <div className="recipe-catalog">  

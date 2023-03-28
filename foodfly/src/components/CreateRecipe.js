@@ -1,11 +1,23 @@
+import {useForm} from '../hooks/formHook'
+
 export function CreateRecipe() {
+ 
+  const { values, handleChange, handleSubmit, errors } = useForm({
+    title:'',
+    type:'',
+    
+
+  })
     return (
       <div className="container">
         <div className="main_div">
           <div className="title">Create Post</div>
-          <form action="POST">
+          <form action="POST"  onSubmit={handleSubmit}>
             <div className="input_box">
-              <input type="text" name="title" placeholder="Title" required="" />
+              <input type="text" 
+              name="title" 
+              value = {values[title]}
+              placeholder="Title" required="" />
               <div className="icon">
                 <i className="fas fa-utensils" />
               </div>

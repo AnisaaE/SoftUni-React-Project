@@ -8,7 +8,6 @@ export function NavigationBar() {
 
   return (
     <nav>
-      <p>Welcome, {userUsername} </p>
       <Link to="/">
         <div className="logo">
           <img
@@ -25,6 +24,7 @@ export function NavigationBar() {
 
         {isAuth ? (
           <>
+                <p>Welcome, {userUsername} </p>
             <Link to="/create">Create Recipe</Link>
             <Link to="/logout">Logout</Link>
             <Link to="/profile">My Profile</Link>

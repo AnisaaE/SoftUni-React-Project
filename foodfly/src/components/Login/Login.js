@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../context/authContext";
+import useForm from "../../hooks/formHook";
 
-import { useForm } from "../../hooks/useForm";
-
-export function Login({ onSubmitLogin }) {
+export function Login() {
+  const {onSubmitLogin} =  useContext(AuthContext)
   const { values, handleChange, handleSubmit, errors } = useForm(
     {
       email: "",
@@ -20,7 +22,7 @@ export function Login({ onSubmitLogin }) {
             <input
               type="text"
               name="email"
-              value={values[email]}
+              value={values.email}
               onChange={handleChange}
               placeholder="Email..."
               required
@@ -33,7 +35,7 @@ export function Login({ onSubmitLogin }) {
             <input
               type="password"
               name="password"
-              value={values[password]}
+              value={values.password}
               onChange={handleChange}
               placeholder="Password"
               required

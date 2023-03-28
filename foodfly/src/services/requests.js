@@ -1,35 +1,41 @@
 const request = async (method, token, url, data) => {
-  const headers = {};
+  const options = {};
 
   if (method !== 'GET') {
-    headers['Content-Type'] = 'application/json';
+      options.method = method;
+
+      if (data) {
+          options.headers = {
+              'content-type': 'application/json',
+          };
+
+          options.body = JSON.stringify(data);
+      }
   }
 
   if (token) {
-    headers['Authorization'] = `Bearer ${token}`;
+      options.headers = {
+          ...options.headers,
+          'X-Authorization': token,
+      };
   }
 
-  const options = {
-    method: method,
-    headers: headers,
-    body: method !== 'GET' ? JSON.stringify(data) : undefined
-  };
+  const response = await fetch(url, options);
 
-  try {
-    const response = await fetch(url, options);
-    const responseData = await response.json();
-
-    if (!response.ok) {
-      throw responseData;
-    }
-
-    return responseData;
-  } catch (error) {
-    throw error;
+  if (response.status === 204) {
+      return {};
   }
+
+  const result = await response.json();
+
+  if (!response.ok) {
+      throw result;
+  }
+
+  return result;
 };
 
-const requestBuilder = (token) => {
+export const requestBuilder = (token) => {
   return {
     get: request.bind(null, 'GET', token),
     post: request.bind(null, 'POST', token),

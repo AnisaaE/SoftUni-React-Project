@@ -10,7 +10,7 @@ export function TypesOfRecipies() {
               <p><a className="btn btn-secondary" href="#">View details &raquo;</a></p>
             </div>
             <div className="col-lg-4">
-            <img src="https://img.taste.com.au/WMldfrFD/taste/2016/11/chicken-and-prosciutto-parmigiana-79468-1.jpeg"/>
+            <img src="https://www.allrecipes.com/thmb/BY8CcWT0JZOjFcWeIem9Fik1x78=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/9266919-c023924050f9406bab6eccea1664e88b.jpg"/>
 
                 <h2 className="fw-normal">Cakes</h2>
               <p><a className="btn btn-secondary" href="#">View details &raquo;</a></p>

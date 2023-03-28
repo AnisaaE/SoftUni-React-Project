@@ -1,36 +1,83 @@
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../context/authContext";
+import useForm from "../hooks/formHook";
 
 export function Register() {
-    return (
-      <div className="container">
+  const { onSubmitRegister } = useContext(AuthContext);
+  
+  const { values, handleChange, handleSubmit, errors } = useForm({
+    username: "",
+    email: "",
+    password: "",
+    repeatPassword: "",
+  },onSubmitRegister);
+  return (
+    <div className="container">
       <div className="main_div">
         <div className="title">Registration</div>
-        <form action="POST">
+        <form action="POST" onSubmit={handleSubmit}>
           <div className="input_box">
-            <input type="text" name="name" placeholder="Name" required />
-            <div className="icon"><i className="fas fa-user" /></div>
+            <input
+              type="text"
+              name="username"
+              value={values.username}
+              onChange={handleChange}
+              placeholder="Name"
+              required
+            />
+            <div className="icon">
+              <i className="fas fa-user" />
+            </div>
           </div>
           <div className="input_box">
-            <input type="text" name="email" placeholder="Email..." required />
-            <div className="icon"><i className="fas fa-user" /></div>
+            <input
+              type="text"
+              name="email"
+              value={values.email}
+              onChange={handleChange}
+              placeholder="Email..."
+              required
+            />
+            <div className="icon">
+              <i className="fas fa-user" />
+            </div>
           </div>
           <div className="input_box">
-            <input type="password" name="password" placeholder="Create password" required />
-            <div className="icon"><i className="fas fa-lock" /></div>
+            <input
+              type="password"
+              name="password"
+              value={values.password}
+              onChange={handleChange}
+              placeholder="Create password"
+              required
+            />
+            <div className="icon">
+              <i className="fas fa-lock" />
+            </div>
           </div>
           <div className="input_box">
-            <input type="password" name="repeatPassword" placeholder="Confirm password" required />
-            <div className="icon"><i className="fas fa-lock" /></div>
+            <input
+              type="password"
+              name="repeatPassword"
+              value={values.repeatPassword}
+              onChange={handleChange}
+              placeholder="Confirm password"
+              required
+            />
+            <div className="icon">
+              <i className="fas fa-lock" />
+            </div>
           </div>
           <div className="input_box button_login">
             <input type="submit" defaultValue="Register" />
           </div>
           <div className="sign_up">
-            Already have an account?  
+            Already have an account?
             <Link to="/login">Login now</Link>
           </div>
         </form>
       </div>
     </div>
-    );
-  }
+  );
+}
