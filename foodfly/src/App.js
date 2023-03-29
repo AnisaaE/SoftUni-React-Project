@@ -35,6 +35,19 @@ function App() {
     recipeService.getAll()
     .then(res=>{setRecipes(res)})
   },[]);
+
+
+  const validateValues = (values) => {
+    const errors = [];
+  
+    for (const key in values) {
+      if (values.hasOwnProperty(key) && values[key] === "") {
+        errors.push(`${key} is required`);
+      }
+    }
+  
+    return errors;
+  };
   
 
   const onSubmitRegister = async (data) => {
@@ -56,14 +69,20 @@ function App() {
   };
 
   const onSubmitLogin = async (data) => {
-    try {
+
+    let validation = validateValues(data)
+    if(validation.length==0){  
+      try {
       let result = await authService.login(data);
       setAuth(result);
       navigate('/');
 
     } catch (err) {
       // throw new Error(err);
+    }}else {
+      console.log('All filds are required')
     }
+  
   };
 
   const onLogout= async () =>{
@@ -76,6 +95,7 @@ function App() {
     onSubmitLogin,
     onLogout,
     token: auth.accessToken,
+    userId: auth._id,
     userUsername: auth.username,
     isAuth: !!auth.accessToken,
   };
@@ -104,7 +124,7 @@ function App() {
           <Route path="/logout" element={<Logout />} />
 
           {/* <Route path="/profile/:userId" element={Profile} /> */}
-          <Route path="/create" element={<CreateRecipe />} />
+          <Route path="/create" element={<CreateRecipe onCreateRecipe={onCreateRecipe}/>} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
         <Footer />

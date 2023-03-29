@@ -1,45 +1,66 @@
-import {useForm} from '../hooks/formHook'
+import useForm from "../hooks/formHook";
 
-export function CreateRecipe() {
+export function CreateRecipe({onCreateRecipe}) {
  
   const { values, handleChange, handleSubmit, errors } = useForm({
-    title:'',
-    type:'',
-    
-
-  })
+    title: '',
+    type: '',
+    timing: '',
+    portions: '',
+    ingredients: '',
+    image: '',
+    preparation: '',
+  }, onCreateRecipe)
     return (
       <div className="container">
         <div className="main_div">
           <div className="title">Create Post</div>
-          <form action="POST"  onSubmit={handleSubmit}>
-            <div className="input_box">
-              <input type="text" 
-              name="title" 
-              value = {values[title]}
-              placeholder="Title" required="" />
-              <div className="icon">
-                <i className="fas fa-utensils" />
-              </div>
+          <form onSubmit={handleSubmit}>
+          <div className="input_box">
+            <input
+              type="text"
+              name="title"
+              value={values.title}
+              onChange={handleChange}
+              placeholder="Title"
+              required=""
+            />
+            <div className="icon">
+              <i className="fas fa-utensils" />
             </div>
-            <div className="input_box">
-              <select name="type">
-                <option value="">Select type</option>
-                <option value="breakfast meals">breakfast meals</option>
-                <option value="main meals">main meals</option>
-                <option value="Cakes">Cakes</option>
-                <option value="Healty meals">Healty meals</option>
+          </div>
+          <div className="input_box">
+            <select
+              name="type"
+              value={values.type}
+              onChange={handleChange}
+            >
+              <option value="">Select type</option>
+              <option value="breakfast meals">breakfast meals</option>
+              <option value="main meals">main meals</option>
+              <option value="Cakes">Cakes</option>
+              <option value="Healty meals">Healty food</option>
                 <option value="Fast meals">Fast meals</option>
               </select>
             </div>
             <div className="input_box">
-              <input type="text" name="timing" placeholder="Timing" required="" />
+              <input type="text" 
+              name="timing"
+              value = {values.timing}
+               placeholder="Timing"
+               onChange={handleChange}
+               required="" />
               <div className="icon">
                 <i className="fas fa-clock" />
               </div>
             </div>
             <div className="input_box">
-              <input type="text" name="portions" placeholder="Portion" required="" />
+              <input type="text"
+               name="portions"
+               value={values.portions}
+               onChange={handleChange}
+               placeholder="Portion"
+                required="" />
               <div className="icon">
                 <i className="fas fa-users" />
               </div>
@@ -48,6 +69,8 @@ export function CreateRecipe() {
               <input
                 type="text"
                 name="ingredients"
+                value={values.ingredients}
+                onChange={handleChange}
                 placeholder="Ingredients"
                 required=""
               />
@@ -56,7 +79,11 @@ export function CreateRecipe() {
               </div>
             </div>
             <div className="input_box">
-              <input type="text" name="image" placeholder="Link image" required="" />
+              <input type="text" name="image"
+              value= {values.image}
+               placeholder="Link image"
+               onChange={handleChange}
+                required="" />
               <div className="icon">
                 <i className="fas fa-image" />
               </div>
@@ -64,6 +91,8 @@ export function CreateRecipe() {
             <div className="input_box">
               <textarea
                 name="preparation"
+                value={values.preparation}
+                onChange={handleChange}
                 placeholder="Preparation"
                 cols={30}
                 rows={10}

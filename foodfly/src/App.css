@@ -199,6 +199,43 @@ nav {
   cursor: pointer;
 }
 
+.active-recipe__edit-button,
+.active-recipe__delete-button {
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.active-recipe__edit-button {
+  background-color: #5cb85c;
+}
+
+.active-recipe__edit-button:hover {
+  background-color: #449d44;
+}
+
+.active-recipe__edit-button a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.active-recipe__delete-button {
+  background-color: #d9534f;
+}
+
+.active-recipe__delete-button:hover {
+  background-color: #c9302c;
+}
+
+.active-recipe__delete-button a {
+  color: #fff;
+  text-decoration: none;
+}
+
 .active-recipe__title,
 .active-recipe__publisher,
 .active-recipe__metadata,

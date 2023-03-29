@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/authContext";
 import useForm from "../../hooks/formHook";
+import { Notification } from "../Notification/Notification";
+
 
 export function Login() {
   const {onSubmitLogin} =  useContext(AuthContext)
@@ -16,6 +18,7 @@ export function Login() {
   return (
     <div className="container">
       <div className="main_div">
+      {errors && <Notification message={errors} type="error" />} 
         <div className="title">Login Form</div>
         <form action="POST" onSubmit={handleSubmit}>
           <div className="input_box">
