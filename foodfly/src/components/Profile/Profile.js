@@ -1,5 +1,11 @@
 import "./Profile.css"
+import { useContext } from "react";
+import { AuthContext } from "../../context/authContext";
+
+
 export function Profile() {
+   
+
     return (
         <div className="profile">
   {/* Start Profile Personal Data Section */}

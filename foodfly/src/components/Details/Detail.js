@@ -1,3 +1,5 @@
+import './Details.css';
+
 import { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 
@@ -46,12 +48,12 @@ export function Detail() {
 
 
   return (
-    <div class="containerDetails">
-      <div class="active-recipe">
-        <img class="active-recipe__img" src={recipe.image} alt="recipe.title" />
-        <h3 class="active-recipe__title">{recipe.title}</h3>
+    <div className="containerDetails">
+      <div className="active-recipe">
+        <img className="active-recipe__img" src={recipe.image} alt="recipe.title" />
+        <h3 className="active-recipe__title">{recipe.title}</h3>
       
-        <ul class="active-recipe__metadata-list">
+        <ul className="active-recipe__metadata-list">
           <li>
             <strong>Method of preparation: </strong>{recipe.preparation}
           </li>
@@ -67,35 +69,35 @@ export function Detail() {
         </ul>
 
         {isOwner && (
-        <div class="active-recipe__actions">
-          <button class="active-recipe__edit-button">
+        <div className="active-recipe__actions">
+          <button className="active-recipe__edit-button">
             <Link to="/edit">Edit</Link>
           </button>
-          <button class="active-recipe__delete-button">
+          <button className="active-recipe__delete-button">
             <Link to="/delete">Delete</Link>
           </button>
         </div>
         )}
       
-        <div class="active-recipe__comments">
+        <div className="active-recipe__comments">
           <h4>Comments:</h4>
-          <ul class="active-recipe__comment-list">
+          <ul className="active-recipe__comment-list">
             {/* {recipe.comments.map(comment => (
         <li key='comment.id'>'comment.text'</li>
         ))} */}
           </ul>
-          <div class="active-recipe__comments">
-            <ul class="active-recipe__comment-list">
+          <div className="active-recipe__comments">
+            <ul className="active-recipe__comment-list">
               {/* {recipe.comments.map(comment => (
               <li key='comment.id'>'comment.text'</li>
               ))} */}
             </ul>
-            <form class="active-recipe__comment-form">
+            <form className="active-recipe__comment-form">
               <textarea
-                class="active-recipe__comment-input"
+                className="active-recipe__comment-input"
                 placeholder="Add a comment"
               ></textarea>
-              <button class="active-recipe__comment-button">Submit</button>
+              <button className="active-recipe__comment-button">Submit</button>
             </form>
           </div>
         </div>

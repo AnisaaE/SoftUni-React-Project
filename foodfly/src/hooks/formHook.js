@@ -16,25 +16,22 @@ const useForm = (initialValues, callback) => {
 
   const handleSubmit = async(event) => {
     event.preventDefault();
-     
-    for (const key in values) {
-      if (values.hasOwnProperty(key) && values[key] === "") {
-        setErrors(errors=> [...errors,`${key} is required` ] )
-      }
-    }
+      setErrors(await callback(values));
+    // for (const key in values) {
+    //   if (values.hasOwnProperty(key) && values[key] === "") {
+    //     setErrors(errors=> [...errors,`${key} is required` ] )
+    //   }
+    // }
 
-     if(errors.length==0){
-       setErrors(await callback(values));
-     }
-     else {
+    //  if(errors.length==0){
       
+    //  }
+    //  else {
 
-     }
+
+    //  }
    
   };
-
-   
-  
 
   return {
     values,
