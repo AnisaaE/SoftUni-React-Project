@@ -3,7 +3,7 @@ import './Details.css';
 import { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 
-import {useService} from "../../hooks/serviceHook"
+import {useService} from "../../hooks/useService"
 import { recipesServiceBuilder } from "../../services/recipesService";
 import { AuthContext } from "../../context/authContext";
 
@@ -71,7 +71,7 @@ export function Detail() {
         {isOwner && (
         <div className="active-recipe__actions">
           <button className="active-recipe__edit-button">
-            <Link to="/edit">Edit</Link>
+            <Link to={`/catalog/${recipeId}/edit`}>Edit</Link>
           </button>
           <button className="active-recipe__delete-button">
             <Link to="/delete">Delete</Link>

@@ -1,7 +1,7 @@
-import useForm from "../hooks/formHook";
+import useForm from "../hooks/useForm";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { useService } from "../hooks/serviceHook";
+import { useService } from "../hooks/useService";
 import { recipesServiceBuilder } from "../services/recipesService";
 
 export function EditRecipe({ onEditRecipe }) {

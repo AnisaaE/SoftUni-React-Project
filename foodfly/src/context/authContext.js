@@ -18,7 +18,7 @@ export function  AuthProvider({ children }){
         if (repeatPassword !== registerData.password) {
           return ["Passwords doesn't match!"]
         }
-        if (repeatPassword<4){
+        if (repeatPassword.length <4){
           return['Passwords should be more than 4 characters!']
         }
         try {

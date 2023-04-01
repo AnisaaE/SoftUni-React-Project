@@ -1,7 +1,7 @@
 import './Notification.css';
 import { useEffect, useState } from 'react';
 
-export function Notification({ message, type, duration = '3000' }) {
+export function Notification({ message, type, duration = '2000' }) {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {

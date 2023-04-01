@@ -1,4 +1,4 @@
-import useForm from "../hooks/formHook";
+import useForm from "../hooks/useForm";
 
 export function CreateRecipe({onCreateRecipe}) {
  
@@ -96,14 +96,13 @@ export function CreateRecipe({onCreateRecipe}) {
                 placeholder="Preparation"
                 cols={30}
                 rows={10}
-                defaultValue={""}
               />
               <div className="icon">
                 <i className="fas fa-keyboard" />
               </div>
             </div>
             <div className="input_box button_login">
-              <input type="submit" defaultValue="Create" />
+              <input type="submit" value="Create" />
             </div>
           </form>
         </div>
