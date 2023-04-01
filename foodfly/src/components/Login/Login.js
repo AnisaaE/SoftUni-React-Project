@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import { AuthContext } from "../../context/authContext";
 import useForm from "../../hooks/formHook";
 import { Notification } from "../Notification/Notification";
+//import { AuthContext } from "../../context/authContext";
 
 
 export function Login() {
   const {onSubmitLogin} =  useContext(AuthContext)
-  const { values, handleChange, handleSubmit, errors } = useForm(
+  const { values, handleChange, handleSubmit, errors, showNotification } = useForm(
     {
       email: "",
       password: "",
@@ -17,8 +18,9 @@ export function Login() {
 
   return (
     <div className="container">
+  <div className="flex-container">
+    <div className="form-container">
       <div className="main_div">
-      {errors && <Notification message={errors} type="error" />} 
         <div className="title">Login Form</div>
         <form action="POST" onSubmit={handleSubmit}>
           <div className="input_box">
@@ -57,5 +59,11 @@ export function Login() {
         </form>
       </div>
     </div>
+    <div className="error-container">
+      {showNotification && (
+        <Notification message="Incorrect email or password!" type="error" duration={2000} />      )}
+    </div>
+  </div>
+</div>
   );
 }

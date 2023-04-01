@@ -1,0 +1,42 @@
+.containerNotification {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.flex-container {
+  display: flex;
+  width: 100%;
+}
+
+.form-container {
+  flex-grow: 1;
+  margin-right: 20px;
+}
+
+.error-container {
+  width: 200px;
+}
+
+.notification {
+  color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.notification.info {
+  background-color: rgb(84, 84, 200);
+}
+
+.notification.success {
+  background-color: rgb(108, 169, 108);
+}
+
+.notification.warning {
+  background-color: orange;
+}
+
+.notification.error {
+  background-color: rgb(211, 79, 79);
+}

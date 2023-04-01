@@ -2,11 +2,12 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/authContext";
 import useForm from "../hooks/formHook";
+import { Notification } from "./Notification/Notification";
 
 export function Register() {
   const { onSubmitRegister } = useContext(AuthContext);
   
-  const { values, handleChange, handleSubmit, errors } = useForm({
+  const { values, handleChange, handleSubmit, errors,  showNotification } = useForm({
     username: "",
     email: "",
     password: "",
@@ -14,7 +15,10 @@ export function Register() {
   },onSubmitRegister);
   return (
     <div className="container">
+       <div className="flex-container">
+    <div className="form-container"></div>
       <div className="main_div">
+   
         <div className="title">Registration</div>
         <form action="POST" onSubmit={handleSubmit}>
           <div className="input_box">
@@ -77,7 +81,12 @@ export function Register() {
             <Link to="/login">Login now</Link>
           </div>
         </form>
+      </div>  
+      <div/> 
+      <div className="error-container">
+      {showNotification && <Notification message={errors[0]} type="error" />} 
       </div>
+    </div>
     </div>
   );
 }

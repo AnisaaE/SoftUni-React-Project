@@ -3,6 +3,7 @@ import { useState } from 'react';
 const useForm = (initialValues, callback) => {
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState([]);
+  const [showNotification, setShowNotification] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -16,7 +17,14 @@ const useForm = (initialValues, callback) => {
 
   const handleSubmit = async(event) => {
     event.preventDefault();
-      setErrors(await callback(values));
+    setShowNotification(false);
+    setErrors([]);
+
+    const callbackErrors = await callback(values);
+    if (callbackErrors) {
+      setErrors(callbackErrors);
+      setShowNotification(true);
+    }
     // for (const key in values) {
     //   if (values.hasOwnProperty(key) && values[key] === "") {
     //     setErrors(errors=> [...errors,`${key} is required` ] )
@@ -37,7 +45,8 @@ const useForm = (initialValues, callback) => {
     values,
     handleChange,
     handleSubmit,
-    errors
+    errors, 
+    showNotification
   };
 };
 

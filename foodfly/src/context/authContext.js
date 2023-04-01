@@ -1,21 +1,26 @@
 import { createContext } from "react";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { authServiceBuilder } from "../services/userService";
 
-import { authServiceBuilder } from "./services/userService";
 
 export const AuthContext = createContext();
 
 export function  AuthProvider({ children }){
+  const navigate = useNavigate();
+
+
     const [auth, setAuth] = useState({});
     const authService = authServiceBuilder(auth.accessToken);
 
     const onSubmitRegister = async (data) => {
         const { repeatPassword, ...registerData } = data;
         if (repeatPassword !== registerData.password) {
-            return;
+          return ["Passwords doesn't match!"]
         }
-        console.log(registerData)
-    
+        if (repeatPassword<4){
+          return['Passwords should be more than 4 characters!']
+        }
         try {
             const result = await authService.register(registerData);
     
@@ -23,7 +28,7 @@ export function  AuthProvider({ children }){
     
             navigate('/');
         } catch (error) {
-            console.log(error);
+            return['There is a problem...'];
         }
       };
 
@@ -37,7 +42,7 @@ export function  AuthProvider({ children }){
           navigate('/');
     
         } catch (err) {
-           alert(err);
+          return [err.message];
         }
     // }else {
       //     console.log('All filds are required')

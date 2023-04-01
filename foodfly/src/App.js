@@ -3,7 +3,7 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 
-import { AuthProvider } from "./context/authContext";
+import { AuthProvider } from "./context/authContext"; 
 
 import { recipesServiceBuilder } from "./services/recipesService";
 
@@ -23,9 +23,7 @@ import { TypesOfRecipies } from "./components/TypesOfRecipies/TypesOfRecipies";
 import { EditRecipe } from "./components/Edit";
 
 function App() {
- 
-  const navigate = useNavigate();
-  
+   const navigate = useNavigate()
   const recipeService = recipesServiceBuilder()//auth.accessToken
   const [recipes, setRecipes] = useState([]);
 
@@ -33,6 +31,14 @@ function App() {
     recipeService.getAll()
     .then(res=>{setRecipes(res)})
   },[]);
+
+  const onRecipeEditSubmit = async (values) => {
+    const result = await recipeService.edit(values._id, values);
+
+    setRecipes(state => state.map(x => x._id === values._id ? result : x))
+
+    navigate(`/catalog/${values._id}`);
+}
 
 
   const validateValues = (values) => {
@@ -62,8 +68,8 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/catalog" element={<Catalog recipes={recipes} />} />
           <Route path="/catalog/:recipeId" element={<Detail />} />
-          <Route path="/catalog/:recipeId/edit" element={EditRecipe}/>
-				<Route path="/catalog/:recipeId/delete" element={DeleteClass}/>
+          <Route path="/catalog/:recipeId/edit" element={<EditRecipe onEditRecipe={onRecipeEditSubmit}/>}/>
+				 {/* <Route path="/catalog/:recipeId/delete" element={DeleteClass}/> */}
           <Route path="/profile" element={<Profile />} />
 
           <Route path="/register" element={<Register/>} />
