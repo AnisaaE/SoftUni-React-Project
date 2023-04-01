@@ -1,9 +1,10 @@
-import * as request from './requester';
+import {requestBuilder} from './requester';
 
 const baseUrl = 'http://localhost:3030/data/comments';
-
-export const getAll = async (gameId) => {
-    const query = encodeURIComponent(`gameId="${gameId}"`);
+ const request = requestBuilder()
+export const getAll = async (recipeId) => {
+   
+    const query = encodeURIComponent(`recipeId="${recipeId}"`);
 
     const result = await request.get(`${baseUrl}?where=${query}`);
     const comments = Object.values(result);
@@ -11,8 +12,8 @@ export const getAll = async (gameId) => {
     return comments;
 };
 
-export const create = async (data) => {
-    const result = await request.post(baseUrl, data);
+export const create = async (recipeId, comment) => {
+    const result = await request.post(baseUrl, {recipeId, comment});
 
     return result;
 };

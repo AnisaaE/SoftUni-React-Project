@@ -36,6 +36,14 @@ const request = async (method, token, url, data) => {
 };
 
 export const requestBuilder = (token) => {
+    if(!token){
+        const serializedAuth = localStorage.getItem('auth')
+
+        if(serializedAuth){
+            const auth = JSON.stringify(serializedAuth)
+            token=auth.accessToken
+        }
+    }
   return {
     get: request.bind(null, 'GET', token),
     post: request.bind(null, 'POST', token),

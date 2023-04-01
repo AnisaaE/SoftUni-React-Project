@@ -36,8 +36,8 @@ export function CreateRecipe({onCreateRecipe}) {
               onChange={handleChange}
             >
               <option value="">Select type</option>
-              <option value="breakfast meals">breakfast meals</option>
-              <option value="main meals">main meals</option>
+              <option value="Breakfast meals">breakfast meals</option>
+              <option value="Main meals">main meals</option>
               <option value="Cakes">Cakes</option>
               <option value="Healty meals">Healty food</option>
                 <option value="Fast meals">Fast meals</option>
