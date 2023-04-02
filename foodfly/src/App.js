@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 
 import { AuthProvider } from "./context/authContext"; 
+import { RecipeProvider } from "./context/RecipeContext";
 
 import { recipesServiceBuilder } from "./services/recipesService";
 
@@ -23,53 +24,19 @@ import { TypesOfRecipies } from "./components/TypesOfRecipies/TypesOfRecipies";
 import { EditRecipe } from "./components/Edit";
 
 function App() {
-   const navigate = useNavigate()
-  const recipeService = recipesServiceBuilder()//auth.accessToken
-  const [recipes, setRecipes] = useState([]);
-
-  useEffect(() => {
-    recipeService.getAll()
-    .then(res=>{setRecipes(res)})
-  },[]);
-
-  const onRecipeEditSubmit = async (values) => {
-    const result = await recipeService.edit(values._id, values);
-
-    setRecipes(state => state.map(x => x._id === values._id ? result : x))
-
-    navigate(`/catalog/${values._id}`);
-}
-
-
-  const validateValues = (values) => {
-    const errors = [];
-  
-    for (const key in values) {
-      if (values.hasOwnProperty(key) && values[key] === "") {
-        errors.push(`${key} is required`);
-      }
-    }
-  
-    return errors;
-  };
-  
-  const onCreateRecipe= async (data)=>{
-    let newRecipe = await recipeService.create(data)
-    setRecipes(state=>[...state, newRecipe])
-
-    navigate("/catalog")
-  }
 
   return (
      <AuthProvider >
+      <RecipeProvider>
+        
         <NavigationBar />
+        
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/catalog" element={<Catalog recipes={recipes} />} />
+          <Route path="/catalog" element={<Catalog />} />
           <Route path="/catalog/:recipeId" element={<Detail />} />
-          <Route path="/catalog/:recipeId/edit" element={<EditRecipe onEditRecipe={onRecipeEditSubmit}/>}/>
-				 {/* <Route path="/catalog/:recipeId/delete" element={DeleteClass}/> */}
+          <Route path="/catalog/:recipeId/edit" element={<EditRecipe />}/>
           <Route path="/profile" element={<Profile />} />
 
           <Route path="/register" element={<Register/>} />
@@ -77,10 +44,13 @@ function App() {
           <Route path="/logout" element={<Logout />} />
 
           {/* <Route path="/profile/:userId" element={Profile} /> */}
-          <Route path="/create" element={<CreateRecipe onCreateRecipe={onCreateRecipe}/>} />
+          <Route path="/create" element={<CreateRecipe />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
+       
         <Footer />
+       
+        </RecipeProvider>
       </AuthProvider>
     
   );

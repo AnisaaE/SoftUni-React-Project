@@ -1,8 +1,11 @@
 import { TypesOfRecipies } from "../TypesOfRecipies/TypesOfRecipies";
 import "./Catalog.css"
 import { CatalogItem } from "./CatalogItem";
+import { useContext } from "react";
+import { RecipeContext } from "../../context/RecipeContext";
 
-export function Catalog({recipes}) {
+export function Catalog() {
+  const {recipes} = useContext(RecipeContext)
     return (
       <>
       <TypesOfRecipies/>

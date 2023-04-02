@@ -1,10 +1,12 @@
 import useForm from "../hooks/useForm";
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { useService } from "../hooks/useService";
 import { recipesServiceBuilder } from "../services/recipesService";
+import { RecipeContext } from "../context/RecipeContext";
 
-export function EditRecipe({ onEditRecipe }) {
+export function EditRecipe() {
+  const {onRecipeEditSubmit} = useContext(RecipeContext)
   const { recipeId } = useParams();
   const recipeService = useService(recipesServiceBuilder);
 
@@ -18,7 +20,7 @@ export function EditRecipe({ onEditRecipe }) {
       image: "",
       preparation: "",
     },
-    onEditRecipe
+    onRecipeEditSubmit
   );
 
   useEffect(() => {
@@ -37,7 +39,7 @@ export function EditRecipe({ onEditRecipe }) {
               value={values.title}
               onChange={handleChange}
               placeholder="Title"
-              required=""
+              required
             />
             <div className="icon">
               <i className="fas fa-utensils" />
@@ -59,11 +61,12 @@ export function EditRecipe({ onEditRecipe }) {
               value={values.timing}
               placeholder="Timing"
               onChange={handleChange}
-              required=""
+              required
             />
             <div className="icon">
               <i className="fas fa-clock" />
             </div>
+            <span style={{ position: 'absolute', right: 10, top: '50%', transform: 'translateY(-50%)' }}>(mins)</span>
           </div>
           <div className="input_box">
             <input
@@ -72,7 +75,7 @@ export function EditRecipe({ onEditRecipe }) {
               value={values.portions}
               onChange={handleChange}
               placeholder="Portion"
-              required=""
+              required
             />
             <div className="icon">
               <i className="fas fa-users" />
@@ -85,7 +88,7 @@ export function EditRecipe({ onEditRecipe }) {
               value={values.ingredients}
               onChange={handleChange}
               placeholder="Ingredients"
-              required=""
+              required
             />
             <div className="icon">
               <i className="fas fa-pepper-hot" />
@@ -98,7 +101,7 @@ export function EditRecipe({ onEditRecipe }) {
               value={values.image}
               placeholder="Link image"
               onChange={handleChange}
-              required=""
+              required
             />
             <div className="icon">
               <i className="fas fa-image" />
@@ -112,7 +115,7 @@ export function EditRecipe({ onEditRecipe }) {
               placeholder="Preparation"
               cols={30}
               rows={10}
-              defaultValue={""}
+              required
             />
             <div className="icon">
               <i className="fas fa-keyboard" />

@@ -1,4 +1,4 @@
-import {requestBuilder} from './requester';
+import { requestBuilder } from "./requests";
 
 const baseUrl = 'http://localhost:3030/data/comments';
  const request = requestBuilder()

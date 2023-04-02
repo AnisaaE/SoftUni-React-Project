@@ -17,6 +17,9 @@ const useForm = (initialValues, callback) => {
 
   const handleSubmit = async(event) => {
     event.preventDefault();
+   if (callback && callback.name === 'onCommentSubmit'){
+     setValues(initialValues)
+  }
     setShowNotification(false);
     setErrors([]);
 
@@ -36,15 +39,18 @@ const useForm = (initialValues, callback) => {
     //  }
     //  else {
 
-
     //  }
-   
   };
-
+const changeValues = (newValues) => {
+      // TODO: Validate newValues shape (like initialValues)
+      
+      setValues(newValues);
+  };
   return {
     values,
     handleChange,
     handleSubmit,
+    changeValues,
     errors, 
     showNotification
   };

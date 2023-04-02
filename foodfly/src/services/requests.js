@@ -36,11 +36,12 @@ const request = async (method, token, url, data) => {
 };
 
 export const requestBuilder = (token) => {
+
     if(!token){
         const serializedAuth = localStorage.getItem('auth')
 
         if(serializedAuth){
-            const auth = JSON.stringify(serializedAuth)
+            const auth = JSON.parse(serializedAuth)
             token=auth.accessToken
         }
     }

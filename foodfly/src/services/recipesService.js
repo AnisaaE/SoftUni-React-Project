@@ -2,8 +2,8 @@ import { requestBuilder } from "./requests";
 
 const baseUrl = 'http://localhost:3030/data/recipes';
 
-export const recipesServiceBuilder = (token) => {
-    const request = requestBuilder(token);
+export const recipesServiceBuilder = () => {
+    const request = requestBuilder();
 
     const getAll = async () => {
         const result = await request.get(baseUrl);

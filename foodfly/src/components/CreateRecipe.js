@@ -1,7 +1,11 @@
-import useForm from "../hooks/useForm";
+import { useContext } from "react";
 
-export function CreateRecipe({onCreateRecipe}) {
- 
+import useForm from "../hooks/useForm";
+import { RecipeContext } from "../context/RecipeContext";
+
+
+export function CreateRecipe() {
+  const {onCreateRecipe} = useContext(RecipeContext)
   const { values, handleChange, handleSubmit, errors } = useForm({
     title: '',
     type: '',
@@ -23,7 +27,7 @@ export function CreateRecipe({onCreateRecipe}) {
               value={values.title}
               onChange={handleChange}
               placeholder="Title"
-              required=""
+              required
             />
             <div className="icon">
               <i className="fas fa-utensils" />
@@ -49,10 +53,12 @@ export function CreateRecipe({onCreateRecipe}) {
               value = {values.timing}
                placeholder="Timing"
                onChange={handleChange}
-               required="" />
+               required />
               <div className="icon">
                 <i className="fas fa-clock" />
               </div>
+              <span style={{ position: 'absolute', right: 10, top: '50%', transform: 'translateY(-50%)' }}>(mins)</span>
+
             </div>
             <div className="input_box">
               <input type="text"
@@ -60,7 +66,7 @@ export function CreateRecipe({onCreateRecipe}) {
                value={values.portions}
                onChange={handleChange}
                placeholder="Portion"
-                required="" />
+                required />
               <div className="icon">
                 <i className="fas fa-users" />
               </div>
@@ -72,7 +78,7 @@ export function CreateRecipe({onCreateRecipe}) {
                 value={values.ingredients}
                 onChange={handleChange}
                 placeholder="Ingredients"
-                required=""
+                required
               />
               <div className="icon">
                 <i className="fas fa-pepper-hot" />
@@ -83,7 +89,7 @@ export function CreateRecipe({onCreateRecipe}) {
               value= {values.image}
                placeholder="Link image"
                onChange={handleChange}
-                required="" />
+                required/>
               <div className="icon">
                 <i className="fas fa-image" />
               </div>
@@ -96,6 +102,7 @@ export function CreateRecipe({onCreateRecipe}) {
                 placeholder="Preparation"
                 cols={30}
                 rows={10}
+                required
               />
               <div className="icon">
                 <i className="fas fa-keyboard" />
