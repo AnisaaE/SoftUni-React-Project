@@ -1,22 +1,25 @@
-import { TypesOfRecipies } from "./TypesOfRecipies/TypesOfRecipies";
 import "./Catalog.css"
 import { CatalogItem } from "./CatalogItem";
 import { useContext } from "react";
 import { RecipeContext } from "../../context/RecipeContext";
+import { useNavigate, useParams } from "react-router-dom";
 
-export function Catalog() {
-  const {recipes} = useContext(RecipeContext)
+
+export function CatalogFiltered() {
+  const {getTypeRecipes} = useContext(RecipeContext)
+  const { type } = useParams();
+  const recipeType = getTypeRecipes(type)
+
     return (
       <>
-      <TypesOfRecipies/>
       <div>
-        <h2 className="recipe" >All recipes</h2>
+        <h2 className="recipe" >All {type} recipes</h2>
       <div className="recipe-catalog">  
-      {recipes.map(x =>
+      {recipeType.map(x =>
                 <CatalogItem key={x._id} {...x} />
             )}
 
-            {recipes.length === 0 && (
+            {recipeType.length === 0 && (
                 <h3 className="no-articles">No articles yet</h3>
             )}
       </div>  

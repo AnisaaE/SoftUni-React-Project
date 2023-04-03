@@ -1444,7 +1444,7 @@
       '1840a313-225c-416a-817a-9954d4609f7c': {
         _ownerId: '35c62d76-8152-4626-8712-eeb96381bea8',
         title: 'Spaghetti with Tomato Sauce',
-        type: 'Main meals',
+        type: 'Main-Meals',
         image: 'https://www.giallozafferano.com/images/228-22832/spaghetti-with-tomato-sauce_1200x800.jpg',
         timing: '30',
         portions: '5',
@@ -1454,7 +1454,7 @@
       '126777f5-3277-42ad-b874-76d043b069cb': {
         _ownerId: '847ec027-f659-4086-8032-5173e2f9c93a',
         title: 'Roasted Chicken and Vegetables',
-        type: 'Main meals',
+        type: 'Main-Meals',
         image: 'https://assets.marthastewart.com/styles/wmax-750/d47/roast-chicken-vegetables-potatoes-3e8b194b-0819/roast-chicken-vegetables-potatoes-3e8b194b-0819_hz.jpg?itok=UiGQxjuq',
         timing: '30',
         portions: '5',

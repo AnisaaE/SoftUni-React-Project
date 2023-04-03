@@ -47,11 +47,11 @@ export function EditRecipe() {
           </div>
           <div className="input_box">
             <select name="type" value={values.type} onChange={handleChange}>
-              <option value="breakfast meals">breakfast meals</option>
-              <option value="main meals">main meals</option>
+              <option value="Breakfast">Breakfast</option>
+              <option value="Main-Meals">Main-Meals</option>
               <option value="Cakes">Cakes</option>
-              <option value="Healty meals">Healty food</option>
-              <option value="Fast meals">Fast meals</option>
+              <option value="Healthy">Healthy</option>
+                <option value="Others">Others</option>
             </select>
           </div>
           <div className="input_box">

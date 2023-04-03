@@ -15,6 +15,7 @@ export const RecipeProvider = ({
     useEffect(() => {
         recipeService.getAll()
         .then(res=>{setRecipes(res)})
+        console.log(recipes)
       },[]);
     
       const onRecipeEditSubmit = async (values) => {
@@ -40,6 +41,10 @@ export const RecipeProvider = ({
     const getRecipe = (recipeId) => {
         return recipes.find(recipe => recipe._id === recipeId);
     };
+    const getTypeRecipes = (type) =>{
+        console.log(recipes, type)
+        return recipes.filter(recipe => recipe.type === type);
+      }
 
     const contextValues = {
         recipes,
@@ -47,6 +52,7 @@ export const RecipeProvider = ({
         onRecipeEditSubmit,
         deleteRecipe,
         getRecipe,
+        getTypeRecipes
     };
 
     return (

@@ -40,11 +40,11 @@ export function CreateRecipe() {
               onChange={handleChange}
             >
               <option value="">Select type</option>
-              <option value="Breakfast meals">breakfast meals</option>
-              <option value="Main meals">main meals</option>
+              <option value="Breakfast">Breakfast</option>
+              <option value="Main-Meals">Main-Meals</option>
               <option value="Cakes">Cakes</option>
-              <option value="Healty meals">Healty food</option>
-                <option value="Fast meals">Fast meals</option>
+              <option value="Healthy">Healthy</option>
+                <option value="Others">Others</option>
               </select>
             </div>
             <div className="input_box">

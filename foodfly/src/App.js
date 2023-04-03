@@ -6,7 +6,6 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import { AuthProvider } from "./context/authContext"; 
 import { RecipeProvider } from "./context/RecipeContext";
 
-import { recipesServiceBuilder } from "./services/recipesService";
 
 import { Catalog } from "./components/Catalog/Catalog";
 import { Home } from "./components/Home/Home";
@@ -20,7 +19,7 @@ import { ErrorPage } from "./components/Error/Error";
 import { CreateRecipe } from "./components/CreateRecipe";
 import About from "./components/About/About";
 import { Profile } from "./components/Profile/Profile";
-import { TypesOfRecipies } from "./components/TypesOfRecipies/TypesOfRecipies";
+import { CatalogFiltered } from "./components/Catalog/CatalogFiltered";
 import { EditRecipe } from "./components/Edit";
 
 function App() {
@@ -35,6 +34,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/catalog" element={<Catalog />} />
+          <Route path="/catalog/type/:type" element={<CatalogFiltered />} />
           <Route path="/catalog/:recipeId" element={<Detail />} />
           <Route path="/catalog/:recipeId/edit" element={<EditRecipe />}/>
           <Route path="/profile" element={<Profile />} />
@@ -43,6 +43,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
 
+          
           {/* <Route path="/profile/:userId" element={Profile} /> */}
           <Route path="/create" element={<CreateRecipe />} />
           <Route path="*" element={<ErrorPage />} />

@@ -179,19 +179,7 @@ form .option_div{
   font-size: 16px;
   color:  #f4d340;
 }
-.button_login input{
-  padding-left: 0;
-  background:  #f4d340;
-  color: #fff;
-  border: none;
-  font-size: 20px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s linear;
-}
-.button_login input:hover{
-  background: #c59f20;
-}
+
 form .sign_up{
   text-align: center;
   margin-top: 25px;
