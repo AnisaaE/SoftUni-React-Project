@@ -5,7 +5,7 @@ import { AuthContext } from "../../context/authContext";
 
 export function Profile() {
    
-
+const {userUsername, email} = useContext(AuthContext)
     return (
         <div className="profile">
   {/* Start Profile Personal Data Section */}
@@ -18,7 +18,7 @@ export function Profile() {
     <div className="personal">
       <div className="edit">
         {/* User Username */}
-        <p>Username</p>
+        <p>{userUsername}</p>
       </div>
       <div className="data">
         {/* Total Number of Photos by the User */}
@@ -26,7 +26,7 @@ export function Profile() {
         <p>recipies</p>
       </div>
       {/* User Email Address */}
-      <p className="email">email</p>
+      <p className="email">{email}</p>
     </div>
   </div>
   {/* Start Uploaded Photos Section */}

@@ -4,6 +4,7 @@
     align-items: center;
     flex-wrap: wrap;
     margin-top: 30px;
+    padding: 20px;
   }
   .recipe h2 {
     text-align: center; 
@@ -48,6 +49,7 @@
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
+    text-align: center;
   }
   
   .recipe-button:hover {

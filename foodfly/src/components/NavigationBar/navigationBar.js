@@ -24,10 +24,11 @@ export function NavigationBar() {
 
         {isAuth ? (
           <>
-                <p>Welcome, {userUsername} </p>
+               
             <Link to="/create">Create Recipe</Link>
             <Link to="/logout">Logout</Link>
             <Link to="/profile">My Profile</Link>
+             <p className="nav-user" >Welcome, Chef {userUsername} </p>
           </>
         ) : (
           <>

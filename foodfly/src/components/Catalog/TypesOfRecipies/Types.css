@@ -1,5 +1,5 @@
 .container {
-    max-width: 1140px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
   }
@@ -52,6 +52,7 @@
     border-radius: 50%;
   }
   .container.marketing {
+    max-width: 1200px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

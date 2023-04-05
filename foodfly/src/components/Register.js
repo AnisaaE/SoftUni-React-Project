@@ -82,7 +82,6 @@ export function Register() {
           </div>
         </form>
       </div>  
-      <div/> 
       <div className="error-container">
       {showNotification && <Notification message={errors[0]} type="error" />} 
       </div>

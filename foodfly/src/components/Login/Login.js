@@ -60,7 +60,7 @@ export function Login() {
     </div>
     <div className="error-container">
       {showNotification && (
-        <Notification message="Incorrect email or password!" type="error" duration={2000} />      )}
+        <Notification message={errors[0]} type="error" duration={2000} />      )}
     </div>
   </div>
 </div>

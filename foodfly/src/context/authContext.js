@@ -2,74 +2,63 @@ import { createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { authServiceBuilder } from "../services/userService";
+import { registerValidation } from "../validations/validations";
 
 export const AuthContext = createContext();
 
-export function  AuthProvider({ children }){
+export function AuthProvider({ children }) {
   const navigate = useNavigate();
 
+  const [auth, setAuth] = useLocalStorage("auth", {});
+  const authService = authServiceBuilder(auth.accessToken);
 
-    const [auth, setAuth] = useLocalStorage('auth', {});
-    const authService = authServiceBuilder(auth.accessToken);
+  const onSubmitRegister = async (data) => {
+    const validationData = registerValidation(data);
+    if (Array.isArray(validationData)) {
+      return validationData 
+    } else {
+      try {
+        const result = await authService.register(validationData);
 
-    const onSubmitRegister = async (data) => {
-        const { repeatPassword, ...registerData } = data;
-        if (repeatPassword !== registerData.password) {
-          return ["Passwords doesn't match!"]
-        }
-        if (repeatPassword.length <4){
-          return['Passwords should be more than 4 characters!']
-        }
-        try {
-            const result = await authService.register(registerData);
-    
-            setAuth(result);
-    
-            navigate('/');
-        } catch (error) {
-            return['There is a problem...'];
-        }
-      };
+        setAuth(result);
+        navigate("/");
+        
+      } catch (error) {
+        return ["There is a problem... Please, try again later!"];
+      }
+    }
+  };
 
-    const onSubmitLogin = async (data) => {
+  const onSubmitLogin = async (data) => {
+    try {
+      let result = await authService.login(data);
+      setAuth(result);
+      navigate("/");
+    } catch (err) {
+      return ["Incorrect email or password!"];
+    }
+  };
 
-        // let validation = validateValues(data)
-        // if(validation.length==0){  
-          try {
-          let result = await authService.login(data);
-          setAuth(result);
-          navigate('/');
-    
-        } catch (err) {
-          return [err.message];
-        }
-    // }else {
-      //     console.log('All filds are required')
-      //   }
-      
-      };
-      
-  const onLogout= async () =>{
+  const onLogout = async () => {
     await authService.logout();
-    setAuth({})
-    localStorage.removeItem('auth');
- }
-    
+    setAuth({});
+    localStorage.removeItem("auth");
+  };
+
   const context = {
     onSubmitRegister,
     onSubmitLogin,
     onLogout,
     token: auth.accessToken,
     userId: auth._id,
+    email: auth.email,
     userUsername: auth.username,
     isAuth: !!auth.accessToken,
   };
 
   return (
     <>
-      <AuthContext.Provider value={context}>
-        {children}
-        </AuthContext.Provider>
+      <AuthContext.Provider value={context}>{children}</AuthContext.Provider>
     </>
-  )
+  );
 }

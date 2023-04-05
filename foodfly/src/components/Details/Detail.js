@@ -30,21 +30,16 @@ export function Detail() {
         setRecipe({...recipeData, comments });
       }
     );
-    recipeService.getOne(recipeId).then((result) => {
-      setRecipe(result);
-    });
   }, [recipeId]);
 
   const onCommentSubmit = async (values) => {
 
     const respons = await commentSevice.create(recipeId, values.comment);
-   console.log(respons)
-    // setRecipe(state => ({ ...state, comments: { ...state.comments, [result._id]: result } }));
-    // setUsername('');
-    // setComment('');
+   console.log(recipe)
   };
 
   const isOwner = recipe._ownerId === userId;
+  console.log(recipe._ownerId,userId )
 
   const onDeleteClick = async () => {
   //  const result = confirm(`Are you sure you want to delete ${recipe.title}`);
@@ -79,7 +74,7 @@ export function Detail() {
           </li>
           <li>
             <strong>Category: </strong>
-            {recipe.type}
+            <Link to={`/catalog/type/${recipe.type}`} className="catalog-link" >{recipe.type}</Link>
           </li>
           <li>
             <strong>Servings: </strong>

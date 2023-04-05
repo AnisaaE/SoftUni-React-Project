@@ -1461,6 +1461,17 @@
         ingredients: 'spaghetti, tomato',
         _createdOn: 1617194295474,
       },
+      "ff436770-76c5-40e2-b231-77409eda7a61": {
+        // if something doesnt work change the owner with 35c62d76-8152-4626-8712-eeb96381bea8
+        _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+        title: 'Easy Cake with Strawberries',
+        type: 'Cakes',
+        image: 'https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/2017_strawberry-shortcake_600x600.jpg?ext=.jpg',
+        timing: '120',
+        portions: '20',
+        ingredients: 'flour, milk, sugar, strawberries',
+        _createdOn: 1617194128618,
+    },
     },
     comments: {},
   };

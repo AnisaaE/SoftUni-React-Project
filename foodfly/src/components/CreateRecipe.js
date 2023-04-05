@@ -2,11 +2,13 @@ import { useContext } from "react";
 
 import useForm from "../hooks/useForm";
 import { RecipeContext } from "../context/RecipeContext";
-
+import { Notification } from "./Notification/Notification";
+import { AuthContext } from "../context/authContext";
 
 export function CreateRecipe() {
+  const { userId} = useContext(AuthContext);
   const {onCreateRecipe} = useContext(RecipeContext)
-  const { values, handleChange, handleSubmit, errors } = useForm({
+  const { values, handleChange, handleSubmit, errors,  showNotification } = useForm({
     title: '',
     type: '',
     timing: '',
@@ -14,9 +16,12 @@ export function CreateRecipe() {
     ingredients: '',
     image: '',
     preparation: '',
+    _ownerId: userId
   }, onCreateRecipe)
     return (
       <div className="container">
+           <div className="flex-container">
+    <div className="form-container"></div>
         <div className="main_div">
           <div className="title">Create Post</div>
           <form onSubmit={handleSubmit}>
@@ -48,7 +53,7 @@ export function CreateRecipe() {
               </select>
             </div>
             <div className="input_box">
-              <input type="text" 
+              <input type="number" 
               name="timing"
               value = {values.timing}
                placeholder="Timing"
@@ -61,7 +66,7 @@ export function CreateRecipe() {
 
             </div>
             <div className="input_box">
-              <input type="text"
+              <input type="number"
                name="portions"
                value={values.portions}
                onChange={handleChange}
@@ -103,6 +108,7 @@ export function CreateRecipe() {
                 cols={30}
                 rows={10}
                 required
+
               />
               <div className="icon">
                 <i className="fas fa-keyboard" />
@@ -112,6 +118,11 @@ export function CreateRecipe() {
               <input type="submit" value="Create" />
             </div>
           </form>
+          </div>
+
+          <div className="error-container">
+      {showNotification && <Notification message={errors[0]} type="error"/>} 
+      </div>
         </div>
       </div>
       

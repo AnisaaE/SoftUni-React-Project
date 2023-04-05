@@ -14,7 +14,17 @@
     height: 50%;
     margin-bottom: 20px;
   }
+  .catalog-link {
+    color: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+  }
   
+  .catalog-link:hover {
+    color: #007bff;
+    text-decoration: underline;
+  }
   .active-recipe__title {
     font-size: 36px;
     font-weight: 700;

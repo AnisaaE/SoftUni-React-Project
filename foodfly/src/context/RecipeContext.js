@@ -10,6 +10,7 @@ export const RecipeProvider = ({
 }) => {
     const navigate = useNavigate();
     const recipeService = recipesServiceBuilder()
+    const [notification, setNotification] = useState(false)
     const [recipes, setRecipes] = useState([]);
 
     useEffect(() => {
@@ -30,8 +31,9 @@ export const RecipeProvider = ({
       const onCreateRecipe= async (data)=>{
         let newRecipe = await recipeService.create(data)
         setRecipes(state=>[...state, newRecipe])
-    
+        setNotification(true)
         navigate("/catalog")
+        setNotification(false)
       }
     
       const deleteRecipe = (recipeId) => {
@@ -52,7 +54,8 @@ export const RecipeProvider = ({
         onRecipeEditSubmit,
         deleteRecipe,
         getRecipe,
-        getTypeRecipes
+        getTypeRecipes,
+         notification
     };
 
     return (
