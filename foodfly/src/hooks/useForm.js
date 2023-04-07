@@ -29,6 +29,7 @@ const useForm = (initialValues, callback) => {
       setShowNotification(true);
     } else {
       const callbackErrors = await callback(values);
+      console.log(callbackErrors)
       if (callbackErrors) {
         setErrors(callbackErrors);
         setShowNotification(true);
@@ -37,9 +38,7 @@ const useForm = (initialValues, callback) => {
   };
 
 
-const changeValues = (newValues) => {
-      // TODO: Validate newValues shape (like initialValues)
-      
+const changeValues = (newValues) => {      
       setValues(newValues);
   };
   return {

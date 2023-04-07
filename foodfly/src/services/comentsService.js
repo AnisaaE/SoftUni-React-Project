@@ -17,3 +17,5 @@ export const create = async (recipeId, comment) => {
 
     return result;
 };
+
+const deleteComment = (commentId) => request.delete(`${baseUrl}/${commentId}`);

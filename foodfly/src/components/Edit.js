@@ -4,13 +4,14 @@ import { useEffect, useContext } from "react";
 import { useService } from "../hooks/useService";
 import { recipesServiceBuilder } from "../services/recipesService";
 import { RecipeContext } from "../context/RecipeContext";
+import { Notification } from "./Notification/Notification";
 
 export function EditRecipe() {
   const {onRecipeEditSubmit} = useContext(RecipeContext)
   const { recipeId } = useParams();
   const recipeService = useService(recipesServiceBuilder);
 
-  const { values, handleChange, handleSubmit, changeValues, errors } = useForm(
+  const { values, handleChange, handleSubmit, changeValues, errors, showNotification} = useForm(
     {
       title: "",
       type: "",
@@ -29,6 +30,7 @@ export function EditRecipe() {
 
   return (
     <div className="container">
+      <div className="flex-container">
       <div className="main_div">
         <div className="title">Edit Post</div>
         <form onSubmit={handleSubmit}>
@@ -125,6 +127,10 @@ export function EditRecipe() {
             <input type="submit" defaultValue="Create" />
           </div>
         </form>
+      </div>
+      <div className="error-container">
+      {showNotification && <Notification message={errors[0]} type="error"/>} 
+      </div>
       </div>
     </div>
   );

@@ -1,4 +1,3 @@
-import { recipeValidation } from "../validations/validations";
 import { requestBuilder } from "./requests";
 
 const baseUrl = "http://localhost:3030/data/recipes";
@@ -20,13 +19,8 @@ export const recipesServiceBuilder = () => {
   };
 
   const create = async (recipeData) => {
-    const validatedData = recipeValidation(recipeData);
-    if (Array.isArray(validatedData)) {
-      return validatedData;
-    } else {
       const result = await request.post(baseUrl, recipeData);
       return result;
-    }
   };
 
   const addComment = async (recipeId, data) => {
@@ -37,7 +31,7 @@ export const recipesServiceBuilder = () => {
 
   const edit = (recipeId, data) => request.put(`${baseUrl}/${recipeId}`, data);
 
-  const deleteGame = (recipeId) => request.delete(`${baseUrl}/${recipeId}`);
+  const deleteRecipe = (recipeId) => request.delete(`${baseUrl}/${recipeId}`);
 
   const recipeFind = async (value) => {
     const encodedValue = encodeURIComponent(value);
@@ -51,7 +45,7 @@ export const recipesServiceBuilder = () => {
     create,
     edit,
     addComment,
-    delete: deleteGame,
+    deleteRecipe,
     recipeFind,
   };
 };

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useForm from "../../../hooks/useForm";
 
-export function AddComment({onCommentSubmit, username}) {
+export function AddComment({onCommentSubmit}) {
   const { values, handleChange, handleSubmit, error }= useForm({
     comment:''
   }, onCommentSubmit)

@@ -7,10 +7,8 @@ import { Notification } from "../Notification/Notification";
 
 export function Catalog() {
   const {recipes, notification} = useContext(RecipeContext)
-  console.log(recipes)
     return (
       <>
-
       <TypesOfRecipies/>
      {notification && <Notification message={'Recipe created successfully'} type="success" duration= '6000'/>}
       <div>

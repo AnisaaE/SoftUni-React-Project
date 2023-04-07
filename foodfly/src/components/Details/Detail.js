@@ -1,57 +1,60 @@
 import "./Details.css";
 
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useContext, useState,useReducer } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 
 import { useService } from "../../hooks/useService";
+import { recipeReducer } from "../../reducers/recipeReducer";
 import { recipesServiceBuilder } from "../../services/recipesService";
 import { AuthContext } from "../../context/authContext";
 import * as commentSevice from "../../services/comentsService";
 
 import { AddComment } from "./AddComment/AddComment";
 import { RecipeContext } from "../../context/RecipeContext";
-
+import { DeleteRecipeModal } from "./DeleteConfirmation";
 export function Detail() {
-  const { userId, isAuth, username } = useContext(AuthContext);
-  const {deleteRecipe} = useContext(RecipeContext)
+  const { userId, isAuth, userUsername } = useContext(AuthContext);
+  const { deleteRecipe } = useContext(RecipeContext);
   const { recipeId } = useParams();
-  const [recipe, setRecipe] = useState({});
+  const [recipe, dispatch] = useReducer(recipeReducer, {});
+  const [isOpen, setIsOpen] = useState(false);
 
   const recipeService = useService(recipesServiceBuilder);
   const navigate = useNavigate();
 
   useEffect(() => {
     Promise.all([
-       recipeService.getOne(recipeId),
-       commentSevice.getAll(recipeId)
-      ])
-      .then(
-      ([recipeData, comments]) => {
-        setRecipe({...recipeData, comments });
-      }
-    );
+      recipeService.getOne(recipeId),
+      commentSevice.getAll(recipeId),
+    ]).then(([recipeData, comments]) => {
+      const recipeState = { ...recipeData, comments };
+      dispatch({ type: "RECIPE_FETCH", payload: recipeState });
+    });
   }, [recipeId]);
 
   const onCommentSubmit = async (values) => {
+    const response = await commentSevice.create(recipeId, values.comment);
 
-    const respons = await commentSevice.create(recipeId, values.comment);
-   console.log(recipe)
+    dispatch({
+      type: "COMMENT_ADD",
+      payload: response,
+      userUsername,
+      userId
+    });
   };
 
   const isOwner = recipe._ownerId === userId;
-  console.log(recipe._ownerId,userId )
+  console.log(isOwner)
 
-  const onDeleteClick = async () => {
-  //  const result = confirm(`Are you sure you want to delete ${recipe.title}`);
-
-   // if (result) {
-        await recipeService.delete(recipe._id);
-
-        deleteRecipe(recipe._id);
-
-        navigate('/catalog');
-  //  }
+  const onDelete = async () => {
+    await recipeService.deleteRecipe(recipe._id);
+    deleteRecipe(recipe._id);
+    navigate("/catalog");
   };
+
+  const confirmationDelete = ()=>{
+    setIsOpen(true);
+  }
 
   return (
     <div className="containerDetails">
@@ -64,9 +67,9 @@ export function Detail() {
         <h3 className="active-recipe__title">{recipe.title}</h3>
 
         <ul className="active-recipe__metadata-list">
-          <li>
-            <strong>Method of preparation: </strong>
-            {recipe.preparation}
+        <li>
+            <strong>Ingredients: </strong>
+            {recipe.ingredients}
           </li>
           <li>
             <strong>Cooking time: </strong>
@@ -74,11 +77,18 @@ export function Detail() {
           </li>
           <li>
             <strong>Category: </strong>
-            <Link to={`/catalog/type/${recipe.type}`} className="catalog-link" >{recipe.type}</Link>
+            <Link to={`/catalog/type/${recipe.type}`} className="catalog-link">
+              {recipe.type}
+            </Link>
           </li>
           <li>
             <strong>Servings: </strong>
             {recipe.portions} people
+          </li>
+
+          <li>
+            <strong>Method of preparation: </strong>
+            {recipe.preparation}
           </li>
         </ul>
 
@@ -89,32 +99,31 @@ export function Detail() {
             </button>
             <button
               className="active-recipe__delete-button"
-              onClick={onDeleteClick}
+              onClick={confirmationDelete}
             >
               Delete
             </button>
+             {isOpen && (
+                <DeleteRecipeModal recipe={recipe} onDelete={onDelete} isOpen={isOpen} setIsOpen={setIsOpen} />
+              )}
           </div>
         )}
 
         <div className="active-recipe__comments">
           <h4>Comments:</h4>
           <ul className="active-recipe__comment-list">
-
-            {
-            recipe.comments ?
+            {recipe.comments &&
               recipe.comments.map((x) => (
                 <li key={x._id}>
-                  <p>
-                     {x.comment}
-                  </p>
+                  {console.log(x)}
+                  <p>* {x.comment}</p>
                 </li>
-              )
-            ) : (
-              <li>No comments yet...</li>
-            )}
+              ))}
+
+            {!recipe.comments?.length && <li>No comments yet...</li>}
           </ul>
 
-          {isAuth && <AddComment onCommentSubmit={onCommentSubmit} username= {username} />}
+          {isAuth && <AddComment onCommentSubmit={onCommentSubmit} />}
         </div>
       </div>
     </div>

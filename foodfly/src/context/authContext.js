@@ -7,22 +7,25 @@ import { registerValidation } from "../validations/validations";
 export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const navigate = useNavigate();
-
+ 
   const [auth, setAuth] = useLocalStorage("auth", {});
+   const navigate = useNavigate();
   const authService = authServiceBuilder(auth.accessToken);
 
   const onSubmitRegister = async (data) => {
     const validationData = registerValidation(data);
+    console.log(auth)
+   
     if (Array.isArray(validationData)) {
       return validationData 
+
     } else {
       try {
         const result = await authService.register(validationData);
-
+        console.log(result)
         setAuth(result);
-        navigate("/");
-        
+        console.log(auth)
+        navigate("/");  
       } catch (error) {
         return ["There is a problem... Please, try again later!"];
       }
@@ -32,6 +35,7 @@ export function AuthProvider({ children }) {
   const onSubmitLogin = async (data) => {
     try {
       let result = await authService.login(data);
+      
       setAuth(result);
       navigate("/");
     } catch (err) {
@@ -42,19 +46,21 @@ export function AuthProvider({ children }) {
   const onLogout = async () => {
     await authService.logout();
     setAuth({});
-    localStorage.removeItem("auth");
+    localStorage.clear();
   };
 
   const context = {
     onSubmitRegister,
     onSubmitLogin,
     onLogout,
+    auth,
     token: auth.accessToken,
     userId: auth._id,
     email: auth.email,
     userUsername: auth.username,
     isAuth: !!auth.accessToken,
   };
+
 
   return (
     <>

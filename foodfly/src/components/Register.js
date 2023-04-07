@@ -12,6 +12,7 @@ export function Register() {
     email: "",
     password: "",
     repeatPassword: "",
+    profilePicture:'',
   },onSubmitRegister);
   return (
     <div className="container">
@@ -69,10 +70,11 @@ export function Register() {
               placeholder="Confirm password"
               required
             />
-            <div className="icon">
+             <div className="icon">
               <i className="fas fa-lock" />
             </div>
           </div>
+           
           <div className="input_box button_login">
             <input type="submit" defaultValue="Register" />
           </div>

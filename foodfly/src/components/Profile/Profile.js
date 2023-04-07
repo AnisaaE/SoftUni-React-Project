@@ -1,46 +1,52 @@
 import "./Profile.css"
 import { useContext } from "react";
 import { AuthContext } from "../../context/authContext";
-
+import { RecipeContext } from "../../context/RecipeContext";
+import { Link } from "react-router-dom";
 
 export function Profile() {
-   
-const {userUsername, email} = useContext(AuthContext)
+const {getRecipesOfUser} = useContext(RecipeContext)   
+const {userUsername, email, userId} = useContext(AuthContext)
+const recipes = getRecipesOfUser(userId)
     return (
         <div className="profile">
-  {/* Start Profile Personal Data Section */}
   <div className="profile-data">
     <div className="profile_img">
       <div className="image">
-        <img src="/static/images/person.png" alt="img8" />
+        <img src='https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png' alt="img8" />
       </div>
     </div>
     <div className="personal">
       <div className="edit">
-        {/* User Username */}
         <p>{userUsername}</p>
       </div>
       <div className="data">
-        {/* Total Number of Photos by the User */}
-        <span>1</span>
+        <span>{recipes.length}</span>
         <p>recipies</p>
       </div>
-      {/* User Email Address */}
       <p className="email">{email}</p>
     </div>
   </div>
-  {/* Start Uploaded Photos Section */}
-  <div className="pet-photos">
-    {/* Link to Uploaded Pet Photo */}
-    <a href="#">
-      {/* Pet Photo */}
+
+<div  className="recipes-photos">
+  {recipes.map(x =>
+                <div className="recipes-photos">
+    
+    <Link to={`/catalog/${x._id}`}>
+    
       <img
-        src="https://hips.hearstapps.com/hmg-prod/images/wide-pans-0-1491930046.jpg?resize=480:*"
+        src={x.image}
         alt="recipe img"
       />
-    </a>
+    </Link>
     
-  </div>
+  </div> 
+            )}</div>
+
+            {recipes.length === 0 && (
+                <h3 className="no-articles">No articles yet</h3>
+            )}
+ 
 </div>
 
     );

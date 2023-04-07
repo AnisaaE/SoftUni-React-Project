@@ -11,10 +11,17 @@ export function Search(){
     },
     recipeFind
   );
+
+   const result = recipeFind();
+   console.log(result)
     return(
         <div className="search-container">
         <form onSubmit={handleSubmit}>
-          <input type="text" placeholder="Search..." value={values.searcedQuery} onChange={handleChange}/>
+          <input type="text" 
+          name = 'searcedQuery'
+           placeholder="Search..." 
+           value={values.searcedQuery} 
+           onChange={handleChange}/>
           <button type="submit">
             <i className="fa fa-search" />
           </button>

@@ -3,10 +3,8 @@ import { useContext } from "react";
 import useForm from "../hooks/useForm";
 import { RecipeContext } from "../context/RecipeContext";
 import { Notification } from "./Notification/Notification";
-import { AuthContext } from "../context/authContext";
 
 export function CreateRecipe() {
-  const { userId} = useContext(AuthContext);
   const {onCreateRecipe} = useContext(RecipeContext)
   const { values, handleChange, handleSubmit, errors,  showNotification } = useForm({
     title: '',
@@ -16,7 +14,6 @@ export function CreateRecipe() {
     ingredients: '',
     image: '',
     preparation: '',
-    _ownerId: userId
   }, onCreateRecipe)
     return (
       <div className="container">

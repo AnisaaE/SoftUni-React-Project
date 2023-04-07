@@ -26,9 +26,9 @@ export function NavigationBar() {
           <>
                
             <Link to="/create">Create Recipe</Link>
-            <Link to="/logout">Logout</Link>
             <Link to="/profile">My Profile</Link>
              <p className="nav-user" >Welcome, Chef {userUsername} </p>
+              <Link to="/logout">Logout</Link>
           </>
         ) : (
           <>
