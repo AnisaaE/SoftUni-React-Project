@@ -153,3 +153,44 @@
   .active-recipe__comment-list li {
     color: black;
   }
+  .active-recipe__comments {
+    margin-top: 40px;
+    width: 100%;
+  }
+  
+  .active-recipe__comment-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .active-recipe__comment-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  
+  .active-recipe__delete-button_comment {
+    background-color: #d9534f;
+    font-size: 14px; /* Updated font size */
+    padding: 5px 10px; /* Updated padding */
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px; 
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .active-recipe__delete-button:hover {
+    background-color: #c9302c;
+  }  
+  
+  
+  .active-recipe__delete-button:focus {
+    outline: none;
+  }
+  
+  .active-recipe__delete-button a {
+    color: #fff;
+    text-decoration: none;
+  }

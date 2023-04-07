@@ -1,6 +1,6 @@
 import "./Details.css";
 
-import { useEffect, useContext, useState,useReducer } from "react";
+import { useEffect, useContext, useState, useReducer } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 
 import { useService } from "../../hooks/useService";
@@ -21,7 +21,7 @@ export function Detail() {
 
   const recipeService = useService(recipesServiceBuilder);
   const navigate = useNavigate();
-
+  console.log(userId, userUsername);
   useEffect(() => {
     Promise.all([
       recipeService.getOne(recipeId),
@@ -37,14 +37,15 @@ export function Detail() {
 
     dispatch({
       type: "COMMENT_ADD",
-      payload: response,
-      userUsername,
-      userId
+      payload: {
+        ...response,
+        userUsername,
+        userId,
+      },
     });
   };
 
   const isOwner = recipe._ownerId === userId;
-  console.log(isOwner)
 
   const onDelete = async () => {
     await recipeService.deleteRecipe(recipe._id);
@@ -52,8 +53,16 @@ export function Detail() {
     navigate("/catalog");
   };
 
-  const confirmationDelete = ()=>{
+  const confirmationDelete = () => {
     setIsOpen(true);
+  };
+
+  const onDeleteComment = async(commentId)=>{
+    await commentSevice.deleteComment(commentId)
+    dispatch({
+      type: "COMMENT_DELETE",
+      commentId: commentId
+    });
   }
 
   return (
@@ -67,7 +76,7 @@ export function Detail() {
         <h3 className="active-recipe__title">{recipe.title}</h3>
 
         <ul className="active-recipe__metadata-list">
-        <li>
+          <li>
             <strong>Ingredients: </strong>
             {recipe.ingredients}
           </li>
@@ -103,9 +112,14 @@ export function Detail() {
             >
               Delete
             </button>
-             {isOpen && (
-                <DeleteRecipeModal recipe={recipe} onDelete={onDelete} isOpen={isOpen} setIsOpen={setIsOpen} />
-              )}
+            {isOpen && (
+              <DeleteRecipeModal
+                recipe={recipe}
+                onDelete={onDelete}
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+              />
+            )}
           </div>
         )}
 
@@ -114,9 +128,16 @@ export function Detail() {
           <ul className="active-recipe__comment-list">
             {recipe.comments &&
               recipe.comments.map((x) => (
-                <li key={x._id}>
-                  {console.log(x)}
-                  <p>* {x.comment}</p>
+                <li key={x._id} className="active-recipe__comment-item">
+                  <p>{x.comment}</p>
+                  {isOwner || x._ownerId === userId ? (
+                    <button
+                      className="active-recipe__delete-button_comment"
+                      onClick={() => onDeleteComment(x._id)}
+                    >
+                      Delete
+                    </button>
+                  ) : null}
                 </li>
               ))}
 

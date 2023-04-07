@@ -12,7 +12,6 @@ export function Register() {
     email: "",
     password: "",
     repeatPassword: "",
-    profilePicture:'',
   },onSubmitRegister);
   return (
     <div className="container">

@@ -27,7 +27,7 @@ export function NavigationBar() {
                
             <Link to="/create">Create Recipe</Link>
             <Link to="/profile">My Profile</Link>
-             <p className="nav-user" >Welcome, Chef {userUsername} </p>
+             <p className="nav-user" >Welcome, Chef {userUsername}</p>
               <Link to="/logout">Logout</Link>
           </>
         ) : (
@@ -37,7 +37,7 @@ export function NavigationBar() {
           </>
         )}
       </div>
-      <Search/>
+      {/* <Search/> */}
     </nav>
   );
 }

@@ -1,11 +1,12 @@
 export const recipeReducer = (state, action) => {
+    console.log(action)
     switch (action.type) {
         case 'RECIPE_FETCH':
             return { ...action.payload };
         case 'COMMENT_ADD':
             return {
                 ...state,
-                comments: [
+                comments: [   
                     ...state.comments,
                     {
                         ...action.payload,

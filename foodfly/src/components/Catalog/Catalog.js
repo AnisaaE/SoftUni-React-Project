@@ -9,6 +9,7 @@ export function Catalog() {
   const {recipes, notification} = useContext(RecipeContext)
     return (
       <>
+
       <TypesOfRecipies/>
      {notification && <Notification message={'Recipe created successfully'} type="success" duration= '6000'/>}
       <div>

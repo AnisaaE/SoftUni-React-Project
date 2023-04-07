@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { Route, Routes} from "react-router-dom";
+import { Route, Router, Routes} from "react-router-dom";
 
 import { AuthProvider } from "./context/authContext"; 
 import { RecipeProvider } from "./context/RecipeContext";
@@ -20,6 +20,8 @@ import About from "./components/About/About";
 import { Profile } from "./components/Profile/Profile";
 import { CatalogFiltered } from "./components/Catalog/CatalogFiltered";
 import { EditRecipe } from "./components/Edit";
+import { RouteGuard } from "./components/common/RouteGuard";
+import { RecipeOwner } from "./components/common/recipeOwner";
 
 function App() {
 
@@ -35,16 +37,23 @@ function App() {
           <Route path="/catalog" element={<Catalog />} />
           <Route path="/catalog/type/:type" element={<CatalogFiltered />} />
           <Route path="/catalog/:recipeId" element={<Detail />} />
-          <Route path="/catalog/:recipeId/edit" element={<EditRecipe />}/>
-          <Route path="/profile" element={<Profile />} />
-
+          
           <Route path="/register" element={<Register/>} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
 
-          
-          {/* <Route path="/profile/:userId" element={Profile} /> */}
+      <Route element={<RouteGuard />}>
+
+          <Route path="/catalog/:recipeId/edit" element={
+               
+               <RecipeOwner>
+                 <EditRecipe />
+             </RecipeOwner>}/>
+
+          <Route path="/profile" element={<Profile />} />
           <Route path="/create" element={<CreateRecipe />} />
+      </Route>
+
           <Route path="*" element={<ErrorPage />} />
         </Routes>
        
