@@ -1,8 +1,8 @@
 import { useContext } from "react";
 
-import useForm from "../hooks/useForm";
-import { RecipeContext } from "../context/RecipeContext";
-import { Notification } from "./Notification/Notification";
+import useForm from "../../hooks/useForm";
+import { RecipeContext } from "../../context/RecipeContext";
+import { Notification } from "../Notification/Notification";
 
 export function CreateRecipe() {
   const {onCreateRecipe} = useContext(RecipeContext)

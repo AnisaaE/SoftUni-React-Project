@@ -1,10 +1,10 @@
-import useForm from "../hooks/useForm";
+import useForm from "../../hooks/useForm";
 import { useParams } from "react-router-dom";
 import { useEffect, useContext } from "react";
-import { useService } from "../hooks/useService";
-import { recipesServiceBuilder } from "../services/recipesService";
-import { RecipeContext } from "../context/RecipeContext";
-import { Notification } from "./Notification/Notification";
+import { useService } from "../../hooks/useService";
+import { recipesServiceBuilder } from "../../services/recipesService";
+import { RecipeContext } from "../../context/RecipeContext";
+import { Notification } from "../Notification/Notification";
 
 export function EditRecipe() {
   const {onRecipeEditSubmit} = useContext(RecipeContext)

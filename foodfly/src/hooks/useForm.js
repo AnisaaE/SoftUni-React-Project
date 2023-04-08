@@ -29,7 +29,6 @@ const useForm = (initialValues, callback) => {
       setShowNotification(true);
     } else {
       const callbackErrors = await callback(values);
-      console.log(callbackErrors)
       if (callbackErrors) {
         setErrors(callbackErrors);
         setShowNotification(true);

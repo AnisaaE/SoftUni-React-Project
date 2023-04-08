@@ -12,14 +12,14 @@ import { NavigationBar } from "./components/NavigationBar/NavigationBar";
 import { Footer } from "./components/Footer/Footer";
 import { Login } from "./components/Login/Login";
 import { Logout } from "./components/Logout/Logout";
-import { Register } from "./components/Register";
+import { Register } from "./components/Register/Register";
 import { Detail } from "./components/Details/Detail";
 import { ErrorPage } from "./components/Error/Error";
-import { CreateRecipe } from "./components/CreateRecipe";
+import { CreateRecipe } from "./components/CreateRecipe/CreateRecipe";
 import About from "./components/About/About";
 import { Profile } from "./components/Profile/Profile";
 import { CatalogFiltered } from "./components/Catalog/CatalogFiltered";
-import { EditRecipe } from "./components/Edit";
+import { EditRecipe } from "./components/Edit/Edit";
 import { RouteGuard } from "./components/common/RouteGuard";
 import { RecipeOwner } from "./components/common/recipeOwner";
 

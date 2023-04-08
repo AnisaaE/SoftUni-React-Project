@@ -21,7 +21,8 @@ export function Detail() {
 
   const recipeService = useService(recipesServiceBuilder);
   const navigate = useNavigate();
-  console.log(userId, userUsername);
+
+
   useEffect(() => {
     Promise.all([
       recipeService.getOne(recipeId),
@@ -34,14 +35,14 @@ export function Detail() {
 
   const onCommentSubmit = async (values) => {
     const response = await commentSevice.create(recipeId, values.comment);
-
+   
     dispatch({
       type: "COMMENT_ADD",
-      payload: {
-        ...response,
-        userUsername,
-        userId,
-      },
+      payload: {...response,
+        author: {
+          username: userUsername,
+          userId: userId 
+        }}
     });
   };
 
@@ -61,8 +62,9 @@ export function Detail() {
     await commentSevice.deleteComment(commentId)
     dispatch({
       type: "COMMENT_DELETE",
-      commentId: commentId
+      payload: commentId
     });
+
   }
 
   return (
@@ -129,7 +131,8 @@ export function Detail() {
             {recipe.comments &&
               recipe.comments.map((x) => (
                 <li key={x._id} className="active-recipe__comment-item">
-                  <p>{x.comment}</p>
+                  <p>*{console.log(x)} {x.comment}</p>
+
                   {isOwner || x._ownerId === userId ? (
                     <button
                       className="active-recipe__delete-button_comment"
@@ -137,7 +140,9 @@ export function Detail() {
                     >
                       Delete
                     </button>
-                  ) : null}
+                  ) : null
+                  
+                  }
                 </li>
               ))}
 
