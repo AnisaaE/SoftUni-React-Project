@@ -1,4 +1,4 @@
-# Foodfly Project
+# Foodfly
 
 ## Project Overview
 
