@@ -4,6 +4,9 @@
 
 Foodfly is a web application built with React that allows users to discover and create new recipes. The application has two views: Guest view and User view. In the Guest view, users can discover new recipes, while in the User view, users can discover, create, and comment on recipes.
 
+
+
+
 ## Project Architecture
 
 The project follows a client-side architecture using React and React DOM. The code structure includes the following:
@@ -33,8 +36,7 @@ To run the Foodfly project locally, follow these steps:
 3. Open another terminal and navigate to the `foodfly` folder within the project: `cd foodfly`.
 4. Install the project dependencies using npm or yarn: `npm install` or `yarn install`.
 5. Start the development server: `npm start` or `yarn start`.
-6. Access the application in your web browser at `http://localhost:3000`.
-
+6. Access the application in your web browser at `http://localhost:3000` and server at `http://localhost:3030`.
 ## Contribution Guidelines
 
 If you would like to contribute to the Foodfly project, please follow these guidelines:
