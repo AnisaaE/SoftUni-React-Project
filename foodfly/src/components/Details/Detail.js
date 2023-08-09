@@ -11,8 +11,10 @@ import * as commentSevice from "../../services/comentsService";
 
 import { AddComment } from "./AddComment/AddComment";
 import { RecipeContext } from "../../context/RecipeContext";
-import { DeleteRecipeModal } from "./DeleteConfirmation";
+import { DeleteRecipeModal } from "./DeleteModal/DeleteConfirmation";
+
 export function Detail() {
+  
   const { userId, isAuth, userUsername } = useContext(AuthContext);
   const { deleteRecipe } = useContext(RecipeContext);
   const { recipeId } = useParams();

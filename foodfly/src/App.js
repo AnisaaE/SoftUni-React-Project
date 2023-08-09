@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { Route, Router, Routes} from "react-router-dom";
+import { Route, Routes} from "react-router-dom";
 
 import { AuthProvider } from "./context/authContext"; 
 import { RecipeProvider } from "./context/RecipeContext";

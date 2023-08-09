@@ -2,7 +2,7 @@ import "./Catalog.css"
 import { CatalogItem } from "./CatalogItem";
 import { useContext } from "react";
 import { RecipeContext } from "../../context/RecipeContext";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 
 export function CatalogFiltered() {

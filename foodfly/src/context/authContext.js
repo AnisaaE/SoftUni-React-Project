@@ -22,9 +22,7 @@ export function AuthProvider({ children }) {
     } else {
       try {
         const result = await authService.register(validationData);
-        console.log(result)
         setAuth(result);
-        console.log(auth)
         navigate("/");  
       } catch (error) {
         return ["There is a problem... Please, try again later!"];
