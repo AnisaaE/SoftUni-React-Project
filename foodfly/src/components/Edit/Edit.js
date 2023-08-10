@@ -53,7 +53,7 @@ export function EditRecipe() {
               <option value="Main-Meals">Main-Meals</option>
               <option value="Cakes">Cakes</option>
               <option value="Healthy">Healthy</option>
-                <option value="Others">Others</option>
+              <option value="Others">Others</option>
             </select>
           </div>
           <div className="input_box">
