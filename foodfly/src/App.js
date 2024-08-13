@@ -1,10 +1,9 @@
 import "./App.css";
 
-import { Route, Routes} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
-import { AuthProvider } from "./context/authContext"; 
+import { AuthProvider } from "./context/authContext";
 import { RecipeProvider } from "./context/RecipeContext";
-
 
 import { Catalog } from "./components/Catalog/Catalog";
 import { Home } from "./components/Home/Home";
@@ -24,44 +23,42 @@ import { RouteGuard } from "./components/common/RouteGuard";
 import { RecipeOwner } from "./components/common/recipeOwner";
 
 function App() {
-
   return (
-     <AuthProvider >
+    <AuthProvider>
       <RecipeProvider>
-        
         <NavigationBar />
-        
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/catalog" element={<Catalog />} />
           <Route path="/catalog/type/:type" element={<CatalogFiltered />} />
           <Route path="/catalog/:recipeId" element={<Detail />} />
-          
-          <Route path="/register" element={<Register/>} />
+
+          <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
 
-      <Route element={<RouteGuard />}>
+          <Route element={<RouteGuard />}>
+            <Route
+              path="/catalog/:recipeId/edit"
+              element={
+                <RecipeOwner>
+                  <EditRecipe />
+                </RecipeOwner>
+              }
+            />
 
-          <Route path="/catalog/:recipeId/edit" element={
-               
-               <RecipeOwner>
-                 <EditRecipe />
-             </RecipeOwner>}/>
-
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/create" element={<CreateRecipe />} />
-      </Route>
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/create" element={<CreateRecipe />} />
+          </Route>
 
           <Route path="*" element={<ErrorPage />} />
         </Routes>
-       
+
         <Footer />
-       
-        </RecipeProvider>
-      </AuthProvider>
-    
+      </RecipeProvider>
+    </AuthProvider>
   );
 }
 

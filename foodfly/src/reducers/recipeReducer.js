@@ -12,7 +12,7 @@ export const recipeReducer = (state, action) => {
             ...action.payload,
             author: {
                 ...action.payload.author,
-              username: action.payload.author.username, // Access username from author object
+              username: action.payload.author.username, 
               userId: action.payload.author.userId,
             },
           },
