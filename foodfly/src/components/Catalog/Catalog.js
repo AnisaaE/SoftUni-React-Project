@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { RecipeContext } from "../../context/RecipeContext";
 import { Notification } from "../Notification/Notification";
 
+
 export function Catalog() {
   const {recipes, notification} = useContext(RecipeContext)
     return (

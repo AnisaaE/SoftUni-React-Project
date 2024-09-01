@@ -27,7 +27,6 @@ export const recipeValidation = (data) => {
   }
   const timing = Number(data.timing)
   if (typeof timing !== "number" || isNaN(timing)) {
-    console.log(data.timing)
     return ["Timing should be a number."];
   }
   const portions = Number(data.portions)

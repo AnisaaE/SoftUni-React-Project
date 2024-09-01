@@ -1,6 +1,5 @@
 import { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { recipesServiceBuilder } from "../services/recipesService";
 import { recipeValidation } from "../validations/validations";
 
@@ -24,7 +23,7 @@ export const RecipeProvider = ({ children }) => {
     if (isValidData) {
       try {
          const result = await recipeService.edit(values._id, values);
-        setRecipes((state) =>
+        setRecipes((state) => 
         state.map((x) => (x._id === values._id ? result : x))
       );
       navigate(`/catalog/${values._id}`);

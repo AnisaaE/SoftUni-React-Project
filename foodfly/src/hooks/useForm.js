@@ -36,7 +36,6 @@ const useForm = (initialValues, callback) => {
     }
   };
 
-
 const changeValues = (newValues) => {      
       setValues(newValues);
   };
